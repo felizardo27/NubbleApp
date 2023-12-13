@@ -8,6 +8,9 @@ function App(): React.JSX.Element {
       <Text preset="headingLarge" style={{color: 'red'}}>
         CoffStack
       </Text>
+      <Text preset="headingLarge" style={{fontFamily: 'Satoshi-Black'}}>
+        CoffStack
+      </Text>
       <Text preset="headingMedium" style={{color: 'red'}}>
         CoffStack
       </Text>
