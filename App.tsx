@@ -5,7 +5,13 @@ import {Text} from './src/components/Text/Text';
 function App(): React.JSX.Element {
   return (
     <SafeAreaView>
-      <Text>CoffStack</Text>
+      <Text preset="headingLarge" style={{color: 'red'}}>
+        CoffStack
+      </Text>
+      <Text preset="headingMedium" style={{color: 'red'}}>
+        CoffStack
+      </Text>
+      <Text preset="paragraphCaption">CoffStack</Text>
     </SafeAreaView>
   );
 }

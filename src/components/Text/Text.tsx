@@ -1,15 +1,28 @@
 import React from 'react';
-import {Text as RNText, TextProps, TextStyle} from 'react-native';
+import {
+  Text as RNText,
+  TextProps as RNTextProps,
+  TextStyle,
+} from 'react-native';
 
-export function Text({children, ...rest}: TextProps) {
+interface TextProps extends RNTextProps {
+  preset?: TextVariants;
+}
+
+export function Text({
+  children,
+  preset = 'paragraphMedium',
+  style,
+  ...rest
+}: TextProps) {
   return (
-    <RNText {...rest} style={fontSizes.headingLarge}>
+    <RNText style={[$fontSizes[preset], style]} {...rest}>
       {children}
     </RNText>
   );
 }
 
-type textVariants =
+type TextVariants =
   | 'headingLarge'
   | 'headingMedium'
   | 'headingSmall'
@@ -19,7 +32,7 @@ type textVariants =
   | 'paragraphCaption'
   | 'paragraphCaptionSmall';
 
-const fontSizes: Record<textVariants, TextStyle> = {
+const $fontSizes: Record<TextVariants, TextStyle> = {
   headingLarge: {fontSize: 32, lineHeight: 38.4},
   headingMedium: {fontSize: 22, lineHeight: 26.4},
   headingSmall: {fontSize: 18, lineHeight: 23.4},
