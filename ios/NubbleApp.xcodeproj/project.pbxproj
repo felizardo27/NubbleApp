@@ -14,6 +14,16 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-NubbleApp-NubbleAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-NubbleApp-NubbleAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		E29391882B29DA3C0087CA1D /* Satoshi-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E293917E2B29DA3C0087CA1D /* Satoshi-LightItalic.otf */; };
+		E29391892B29DA3C0087CA1D /* Satoshi-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E293917F2B29DA3C0087CA1D /* Satoshi-Regular.otf */; };
+		E293918A2B29DA3C0087CA1D /* Satoshi-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E29391802B29DA3C0087CA1D /* Satoshi-Medium.otf */; };
+		E293918B2B29DA3C0087CA1D /* Satoshi-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E29391812B29DA3C0087CA1D /* Satoshi-Light.otf */; };
+		E293918C2B29DA3C0087CA1D /* Satoshi-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E29391822B29DA3C0087CA1D /* Satoshi-Bold.otf */; };
+		E293918D2B29DA3C0087CA1D /* Satoshi-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E29391832B29DA3C0087CA1D /* Satoshi-Black.otf */; };
+		E293918E2B29DA3C0087CA1D /* Satoshi-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E29391842B29DA3C0087CA1D /* Satoshi-MediumItalic.otf */; };
+		E293918F2B29DA3C0087CA1D /* Satoshi-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E29391852B29DA3C0087CA1D /* Satoshi-BlackItalic.otf */; };
+		E29391902B29DA3C0087CA1D /* Satoshi-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E29391862B29DA3C0087CA1D /* Satoshi-Italic.otf */; };
+		E29391912B29DA3C0087CA1D /* Satoshi-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E29391872B29DA3C0087CA1D /* Satoshi-BoldItalic.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +53,16 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-NubbleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NubbleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = NubbleApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-NubbleApp-NubbleAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NubbleApp-NubbleAppTests.release.xcconfig"; path = "Target Support Files/Pods-NubbleApp-NubbleAppTests/Pods-NubbleApp-NubbleAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		E293917E2B29DA3C0087CA1D /* Satoshi-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Satoshi-LightItalic.otf"; path = "../../Satoshi_Complete/Fonts/OTF/Satoshi-LightItalic.otf"; sourceTree = "<group>"; };
+		E293917F2B29DA3C0087CA1D /* Satoshi-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Satoshi-Regular.otf"; path = "../../Satoshi_Complete/Fonts/OTF/Satoshi-Regular.otf"; sourceTree = "<group>"; };
+		E29391802B29DA3C0087CA1D /* Satoshi-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Satoshi-Medium.otf"; path = "../../Satoshi_Complete/Fonts/OTF/Satoshi-Medium.otf"; sourceTree = "<group>"; };
+		E29391812B29DA3C0087CA1D /* Satoshi-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Satoshi-Light.otf"; path = "../../Satoshi_Complete/Fonts/OTF/Satoshi-Light.otf"; sourceTree = "<group>"; };
+		E29391822B29DA3C0087CA1D /* Satoshi-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Satoshi-Bold.otf"; path = "../../Satoshi_Complete/Fonts/OTF/Satoshi-Bold.otf"; sourceTree = "<group>"; };
+		E29391832B29DA3C0087CA1D /* Satoshi-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Satoshi-Black.otf"; path = "../../Satoshi_Complete/Fonts/OTF/Satoshi-Black.otf"; sourceTree = "<group>"; };
+		E29391842B29DA3C0087CA1D /* Satoshi-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Satoshi-MediumItalic.otf"; path = "../../Satoshi_Complete/Fonts/OTF/Satoshi-MediumItalic.otf"; sourceTree = "<group>"; };
+		E29391852B29DA3C0087CA1D /* Satoshi-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Satoshi-BlackItalic.otf"; path = "../../Satoshi_Complete/Fonts/OTF/Satoshi-BlackItalic.otf"; sourceTree = "<group>"; };
+		E29391862B29DA3C0087CA1D /* Satoshi-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Satoshi-Italic.otf"; path = "../../Satoshi_Complete/Fonts/OTF/Satoshi-Italic.otf"; sourceTree = "<group>"; };
+		E29391872B29DA3C0087CA1D /* Satoshi-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Satoshi-BoldItalic.otf"; path = "../../Satoshi_Complete/Fonts/OTF/Satoshi-BoldItalic.otf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -86,6 +106,7 @@
 		13B07FAE1A68108700A75B9A /* NubbleApp */ = {
 			isa = PBXGroup;
 			children = (
+				E293917B2B29D7C50087CA1D /* fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -146,6 +167,23 @@
 				89C6BE57DB24E9ADA2F236DE /* Pods-NubbleApp-NubbleAppTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E293917B2B29D7C50087CA1D /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E29391832B29DA3C0087CA1D /* Satoshi-Black.otf */,
+				E29391852B29DA3C0087CA1D /* Satoshi-BlackItalic.otf */,
+				E29391822B29DA3C0087CA1D /* Satoshi-Bold.otf */,
+				E29391872B29DA3C0087CA1D /* Satoshi-BoldItalic.otf */,
+				E29391862B29DA3C0087CA1D /* Satoshi-Italic.otf */,
+				E29391812B29DA3C0087CA1D /* Satoshi-Light.otf */,
+				E293917E2B29DA3C0087CA1D /* Satoshi-LightItalic.otf */,
+				E29391802B29DA3C0087CA1D /* Satoshi-Medium.otf */,
+				E29391842B29DA3C0087CA1D /* Satoshi-MediumItalic.otf */,
+				E293917F2B29DA3C0087CA1D /* Satoshi-Regular.otf */,
+			);
+			name = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,8 +279,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E293918C2B29DA3C0087CA1D /* Satoshi-Bold.otf in Resources */,
+				E293918D2B29DA3C0087CA1D /* Satoshi-Black.otf in Resources */,
+				E293918E2B29DA3C0087CA1D /* Satoshi-MediumItalic.otf in Resources */,
+				E293918F2B29DA3C0087CA1D /* Satoshi-BlackItalic.otf in Resources */,
+				E293918B2B29DA3C0087CA1D /* Satoshi-Light.otf in Resources */,
+				E29391892B29DA3C0087CA1D /* Satoshi-Regular.otf in Resources */,
+				E29391882B29DA3C0087CA1D /* Satoshi-LightItalic.otf in Resources */,
+				E293918A2B29DA3C0087CA1D /* Satoshi-Medium.otf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				E29391902B29DA3C0087CA1D /* Satoshi-Italic.otf in Resources */,
+				E29391912B29DA3C0087CA1D /* Satoshi-BoldItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
