@@ -4,7 +4,6 @@ import {Text} from './src/components/Text/Text';
 import {Button} from './src/components/Button/Button';
 import {ThemeProvider} from '@shopify/restyle';
 import {theme} from './src/theme/theme';
-import {Box} from './src/components/Box/Box';
 
 function App(): React.JSX.Element {
   return (
@@ -14,9 +13,11 @@ function App(): React.JSX.Element {
           <Text italic preset="headingLarge">
             CoffStack
           </Text>
-          <Box marginBottom="s24">
-            <Button title="Entrar" />
-          </Box>
+          <Button
+            title="Entrar"
+            marginBottom="s24"
+            backgroundColor="carrotSecondary"
+          />
           <Button loading title="loading" />
         </View>
       </SafeAreaView>

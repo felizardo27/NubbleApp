@@ -1,14 +1,18 @@
 import React from 'react';
 import {ActivityIndicator} from 'react-native';
 import {Text} from '../Text/Text';
-import {TouchableOpacityBox} from '../Box/Box';
+import {TouchableOpacityBox, TouchableOpacityBoxProps} from '../Box/Box';
 
-interface ButtonProps {
+interface ButtonProps extends TouchableOpacityBoxProps {
   title: string;
   loading?: boolean;
 }
 
-export function Button({title, loading}: ButtonProps) {
+export function Button({
+  title,
+  loading,
+  ...touchableOpacityBoxProps
+}: ButtonProps) {
   return (
     <TouchableOpacityBox
       backgroundColor="greenPrimary"
@@ -17,14 +21,7 @@ export function Button({title, loading}: ButtonProps) {
       alignItems="center"
       justifyContent="center"
       borderRadius="s16"
-      // style={{
-      //   paddingHorizontal: 20,
-      //   paddingVertical: 14,
-      //   backgroundColor: colors.carrotSecondary,
-      //   alignItems: 'center',
-      //   borderRadius: 16,
-      // }}
-    >
+      {...touchableOpacityBoxProps}>
       {loading ? (
         <ActivityIndicator />
       ) : (
