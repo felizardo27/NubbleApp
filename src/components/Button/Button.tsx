@@ -1,9 +1,7 @@
 import React from 'react';
 import {ActivityIndicator} from 'react-native';
 import {Text} from '../Text/Text';
-import {useTheme} from '@shopify/restyle';
-import {Theme} from '../../theme/theme';
-import {Box, TouchableOpacityBox} from '../Box/Box';
+import {TouchableOpacityBox} from '../Box/Box';
 
 interface ButtonProps {
   title: string;
