@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextProps as RNTextProps, TextStyle} from 'react-native';
+import {TextStyle} from 'react-native';
 import {createText} from '@shopify/restyle';
 import {Theme} from '../../theme/theme';
 
