@@ -16,7 +16,7 @@ function App(): React.JSX.Element {
           <Button
             title="Entrar"
             marginBottom="s24"
-            backgroundColor="carrotSecondary"
+            backgroundColor="greenPrimary"
           />
           <Button loading title="loading" />
         </View>
