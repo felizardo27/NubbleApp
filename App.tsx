@@ -16,7 +16,9 @@ function App() {
       <Text preset="headingLarge" style={{color: 'red'}}>
         CoffStack
       </Text>
-      <Text preset="headingMedium" style={{color: 'red'}}>
+      <Text
+        preset="headingLarge"
+        style={{fontFamily: 'Satoshi-Black', color: 'red'}}>
         CoffStack
       </Text>
       <Text preset="paragraphMedium">CoffStack</Text>
