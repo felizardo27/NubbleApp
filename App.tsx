@@ -13,12 +13,8 @@ import {Text} from './src/components/Text/Text';
 function App() {
   return (
     <SafeAreaView>
-      <Text preset="headingLarge" style={{color: 'red'}}>
-        CoffStack
-      </Text>
-      <Text
-        preset="headingLarge"
-        style={{fontFamily: 'Satoshi-Black', color: 'red'}}>
+      <Text preset="headingLarge">CoffStack</Text>
+      <Text preset="headingSmall" italic>
         CoffStack
       </Text>
       <Text preset="paragraphMedium">CoffStack</Text>
