@@ -7,17 +7,17 @@
 
 import React from 'react';
 
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import {Text} from './src/components/Text/Text';
+import {Button} from './src/components/Button/Button';
 
 function App() {
   return (
     <SafeAreaView>
-      <Text preset="headingLarge">CoffStack</Text>
-      <Text preset="headingSmall" italic>
-        CoffStack
-      </Text>
-      <Text preset="paragraphMedium">CoffStack</Text>
+      <View style={{paddingHorizontal: 24}}>
+        <Text preset="headingLarge">CoffStack</Text>
+        <Button title="Entrar" />
+      </View>
     </SafeAreaView>
   );
 }
