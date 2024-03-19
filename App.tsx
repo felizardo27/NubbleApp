@@ -5,7 +5,6 @@ import {Text} from './src/components/Text/Text';
 import {Button} from './src/components/Button/Button';
 import {ThemeProvider} from '@shopify/restyle';
 import {theme} from './src/theme/theme';
-import {Box} from './src/components/Box/Box';
 
 function App() {
   return (
@@ -14,9 +13,7 @@ function App() {
         <View style={{paddingHorizontal: 24}}>
           <Text preset="headingLarge">CoffStack</Text>
 
-          <Box marginBottom="s20">
-            <Button title="Entrar" />
-          </Box>
+          <Button title="Entrar" mb="s20" />
           <Button loading title="Loading" />
         </View>
       </SafeAreaView>
