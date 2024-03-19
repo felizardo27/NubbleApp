@@ -25,7 +25,7 @@ export function Button({
       {loading ? (
         <ActivityIndicator />
       ) : (
-        <Text style={{color: '#fff'}} preset="paragraphMedium" bold>
+        <Text preset="paragraphMedium" bold color="primaryContrast">
           {title}
         </Text>
       )}
