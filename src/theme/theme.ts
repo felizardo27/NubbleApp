@@ -1,6 +1,6 @@
 import {createTheme} from '@shopify/restyle';
 
-const pallete = {
+const palette = {
   greenPrimary: '#074C4E',
   greenPrimaryLight: '#EAF6F6',
   carrotSecondary: '#F86F2D',
@@ -21,22 +21,35 @@ const pallete = {
 
 export const theme = createTheme({
   colors: {
-    ...pallete,
-    primary: pallete.greenPrimary,
-    primaryContrast: pallete.grayWhite,
+    ...palette,
+    primary: palette.greenPrimary,
+    primaryContrast: palette.grayWhite,
 
-    buttonPrimary: pallete.greenPrimary,
+    buttonPrimary: palette.greenPrimary,
 
-    background: pallete.grayWhite,
-    backgroundContrast: pallete.grayBlack,
+    background: palette.grayWhite,
+    backgroundContrast: palette.grayBlack,
 
-    error: pallete.redError,
-    errorLight: pallete.redErrorLight,
+    error: palette.redError,
+    errorLight: palette.redErrorLight,
 
-    success: pallete.greenSuccess,
-    successLight: pallete.greenSuccessLight,
+    success: palette.greenSuccess,
+    successLight: palette.greenSuccessLight,
   },
-  spacing: {},
+  spacing: {
+    s4: 4,
+    s8: 8,
+    s10: 10,
+    s12: 12,
+    s14: 14,
+    s16: 16,
+    s20: 20,
+    s24: 24,
+    s32: 32,
+    s40: 40,
+    s48: 48,
+    s56: 56,
+  },
   borderRadii: {},
 });
 
