@@ -13,7 +13,9 @@ function App() {
         <View style={{paddingHorizontal: 24}}>
           <Text preset="headingLarge">CoffStack</Text>
 
-          <Button title="Entrar" mb="s20" />
+          <Button title="Primary" mb="s20" />
+          <Button preset="outline" title="Outline" mb="s20" />
+          <Button preset="secondary" title="Secondary" mb="s20" />
           <Button loading title="Loading" />
         </View>
       </SafeAreaView>
