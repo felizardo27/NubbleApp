@@ -2,10 +2,10 @@ import React from 'react';
 
 import {SafeAreaView, View} from 'react-native';
 import {Text} from './src/components/Text/Text';
-import {Button} from './src/components/Button/Button';
 import {ThemeProvider} from '@shopify/restyle';
 import {theme} from './src/theme/theme';
-import {EyeOffIcon} from './src/assets/icons/EyeOffIcon';
+import {Box} from './src/components/Box/Box';
+import {Icon} from './src/components/Icon/Icon';
 
 function App() {
   return (
@@ -14,14 +14,14 @@ function App() {
         <View style={{paddingHorizontal: 24}}>
           <Text preset="headingLarge">CoffStack</Text>
 
-          <Button title="Primary" mb="s20" />
-          <Button title="Primary" mb="s20" loading />
-          <Button title="Primary" mb="s20" disabled />
-
-          <Button preset="outline" title="Outline" mb="s20" />
-          <Button preset="outline" title="Outline" mb="s20" disabled />
-
-          <EyeOffIcon size={100} color="blue" />
+          <Box
+            flexDirection="row"
+            alignItems="center"
+            justifyContent="center"
+            gap="s20">
+            <Icon name="eyeOn" />
+            <Icon name="eyeOff" />
+          </Box>
         </View>
       </SafeAreaView>
     </ThemeProvider>
