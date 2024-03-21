@@ -19,8 +19,8 @@ function App() {
             alignItems="center"
             justifyContent="center"
             gap="s20">
-            <Icon name="eyeOn" />
-            <Icon name="eyeOff" />
+            <Icon name="eyeOn" color="error" size={100} />
+            <Icon name="eyeOff" color="carrotSecondary" size={70} />
           </Box>
         </View>
       </SafeAreaView>
