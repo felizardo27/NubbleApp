@@ -5,6 +5,7 @@ import {Text} from './src/components/Text/Text';
 import {Button} from './src/components/Button/Button';
 import {ThemeProvider} from '@shopify/restyle';
 import {theme} from './src/theme/theme';
+import {EyeOffIcon} from './src/assets/icons/EyeOffIcon';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
 
           <Button preset="outline" title="Outline" mb="s20" />
           <Button preset="outline" title="Outline" mb="s20" disabled />
+
+          <EyeOffIcon size={100} color="blue" />
         </View>
       </SafeAreaView>
     </ThemeProvider>
