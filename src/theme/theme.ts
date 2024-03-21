@@ -12,7 +12,7 @@ const palette = {
 
   grayBlack: '#000000',
   gray1: '#636363',
-  gra2: '#8E8E8E',
+  gray2: '#8E8E8E',
   gray3: '#B3B3B3',
   gray4: '#E1E1E1',
   gray5: '#F5F5F5',
