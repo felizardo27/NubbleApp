@@ -1,12 +1,12 @@
 import React from 'react';
 
-import {SafeAreaView, TextInput, View} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import {Text} from './src/components/Text/Text';
 import {ThemeProvider} from '@shopify/restyle';
 import {theme} from './src/theme/theme';
 import {Box} from './src/components/Box/Box';
-import {Icon} from './src/components/Icon/Icon';
 import {Button} from './src/components/Button/Button';
+import {TextInput} from './src/components/TextInput/TextInput';
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
 
           <Box mb="s20">
             <TextInput
+              label="E-mail"
               style={{borderWidth: 1, height: 50, borderRadius: 12}}
               placeholder="Digite seu e-mail"
             />
@@ -29,6 +30,7 @@ function App() {
 
           <Box>
             <TextInput
+              label="Senha"
               style={{borderWidth: 1, height: 50, borderRadius: 12}}
               placeholder="Digite sua senha"
             />
