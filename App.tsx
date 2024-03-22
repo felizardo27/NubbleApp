@@ -4,7 +4,6 @@ import {SafeAreaView, View} from 'react-native';
 import {Text} from './src/components/Text/Text';
 import {ThemeProvider} from '@shopify/restyle';
 import {theme} from './src/theme/theme';
-import {Box} from './src/components/Box/Box';
 import {Button} from './src/components/Button/Button';
 import {TextInput} from './src/components/TextInput/TextInput';
 import {Icon} from './src/components/Icon/Icon';
@@ -21,22 +20,21 @@ function App() {
             Digite seu e-mail e senha para entrar
           </Text>
 
-          <Box mb="s20">
-            <TextInput
-              errorMessage="Mensagem de erro"
-              label="E-mail"
-              placeholder="Digite seu e-mail"
-            />
-          </Box>
+          <TextInput
+            errorMessage="Mensagem de erro"
+            label="E-mail"
+            placeholder="Digite seu e-mail"
+            boxProps={{mb: 's20'}}
+          />
 
-          <Box>
-            <TextInput
-              label="Senha"
-              placeholder="Digite sua senha"
-              rightComponent={<Icon name="eyeOn" color="gray2" />}
-            />
-          </Box>
-          <Text preset="paragraphSmall" bold color="primary" mt="s8">
+          <TextInput
+            label="Senha"
+            placeholder="Digite sua senha"
+            rightComponent={<Icon name="eyeOn" color="gray2" />}
+            boxProps={{mb: 's10'}}
+          />
+
+          <Text preset="paragraphSmall" bold color="primary">
             Esqueci minha senha
           </Text>
 
