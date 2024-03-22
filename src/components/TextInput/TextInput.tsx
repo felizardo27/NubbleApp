@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {
+  Pressable,
   TextInput as RNTextInput,
   TextInputProps as RNTextInputProps,
   TextStyle,
@@ -14,24 +15,31 @@ interface TextInputProps extends RNTextInputProps {
 
 export function TextInput({label, ...rnTextInputProps}: TextInputProps) {
   const {colors} = useAppTheme();
+  const inputRef = useRef<RNTextInput>(null);
+
+  function focusInput() {
+    inputRef.current?.focus();
+  }
   return (
-    <Box>
-      <Text preset="paragraphMedium" mb="s4">
-        {label}
-      </Text>
-      <Box {...$textInputContainer}>
-        <RNTextInput
-          placeholderTextColor={colors.gray2}
-          {...rnTextInputProps}
-          style={$textInputStyle}
-        />
+    <Pressable onPress={focusInput}>
+      <Box>
+        <Text preset="paragraphMedium" mb="s4">
+          {label}
+        </Text>
+        <Box {...$textInputContainer}>
+          <RNTextInput
+            ref={inputRef}
+            placeholderTextColor={colors.gray2}
+            {...rnTextInputProps}
+            style={$textInputStyle}
+          />
+        </Box>
       </Box>
-    </Box>
+    </Pressable>
   );
 }
 
 const $textInputStyle: TextStyle = {
-  borderWidth: 1,
   fontFamily: $fontFamily.Regular,
   ...$fontSizes.paragraphMedium,
   padding: 0,
