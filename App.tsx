@@ -21,19 +21,11 @@ function App() {
           </Text>
 
           <Box mb="s20">
-            <TextInput
-              label="E-mail"
-              style={{borderWidth: 1, height: 50, borderRadius: 12}}
-              placeholder="Digite seu e-mail"
-            />
+            <TextInput label="E-mail" placeholder="Digite seu e-mail" />
           </Box>
 
           <Box>
-            <TextInput
-              label="Senha"
-              style={{borderWidth: 1, height: 50, borderRadius: 12}}
-              placeholder="Digite sua senha"
-            />
+            <TextInput label="Senha" placeholder="Digite sua senha" />
           </Box>
           <Text preset="paragraphSmall" bold color="primary" mt="s8">
             Esqueci minha senha
