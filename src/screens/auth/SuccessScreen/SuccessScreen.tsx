@@ -3,21 +3,24 @@ import {Screen} from '../../../components/Screen/Screen';
 import {Icon} from '../../../components/Icon/Icon';
 import {Text} from '../../../components/Text/Text';
 import {Button} from '../../../components/Button/Button';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../../routes/Routes';
 
-export function SuccessScreen() {
+type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SuccessScreen'>;
 
+export function SuccessScreen({route}: ScreenProps) {
   function goBackToHome() {
     //TODO:
   }
 
   return (
     <Screen>
-      <Icon name="check" />
+      <Icon {...route.params.icon} />
       <Text preset="headingLarge" mt="s24">
-        Sua conta foi criada com sucesso!
+        {route.params.title}
       </Text>
       <Text preset="paragraphLarge" mt="s16">
-        Agora é só fazer login na nossa plataforma
+        {route.params.description}
       </Text>
       <Button onPress={goBackToHome} title="Voltar ao início" mt="s40" />
     </Screen>

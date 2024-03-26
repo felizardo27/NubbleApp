@@ -32,13 +32,15 @@ import {SendIcon} from '../../assets/icons/SendIcon';
 import {SettingsIcon} from '../../assets/icons/SettingsIcon';
 import {TrashIcon} from '../../assets/icons/TrashIcon';
 import {BookmarkFillIcon} from '../../assets/icons/BookmarkFillIcon';
+import { CheckRoundIcon } from '../../assets/icons/CheckRoundIcon';
+import { MessageRoundIcon } from '../../assets/icons/MessageRoundIcon';
 
 export interface IconBase {
   size?: number;
   color?: string;
 }
 
-interface Props {
+export interface IconProps {
   name: IconName;
   color?: ThemeColors;
   size?: number;
@@ -50,7 +52,7 @@ export function Icon({
   color = 'backgroundContrast',
   size,
   onPress,
-}: Props) {
+}: IconProps) {
   const {colors} = useAppTheme();
   const SvgIcon = iconRegistry[name];
 
@@ -76,6 +78,7 @@ const iconRegistry = {
   chat: ChatIcon,
   chatOn: ChatOnIcon,
   check: CheckIcon,
+  checkRound: CheckRoundIcon,
   chevronRight: ChevronRightIcon,
   comment: CommentIcon,
   eyeOff: EyeOffIcon,
@@ -87,6 +90,7 @@ const iconRegistry = {
   home: HomeIcon,
   homeFill: HomeFillIcon,
   message: MessageIcon,
+  messageRound: MessageRoundIcon,
   more: MoreIcon,
   newPost: NewPostIcon,
   profile: ProfileIcon,
