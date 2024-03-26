@@ -7,14 +7,11 @@ import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../routes/Routes';
 
-type ScreenProps = NativeStackScreenProps<
-  RootStackParamList,
-  'SignUpScreen'
->;
+type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
 
 export function SignUpScreen(props: ScreenProps) {
   function submitForm() {
-    // TODO
+    props.navigation.navigate('SuccessScreen');
   }
   return (
     <Screen canGoBack scrollable>
