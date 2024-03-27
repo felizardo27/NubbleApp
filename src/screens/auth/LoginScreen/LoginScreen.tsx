@@ -15,6 +15,10 @@ export function LoginScreen({navigation}: ScreenProps) {
     navigation.navigate('SignUpScreen');
   }
 
+  function navigateToForgotPasswordScreen() {
+    navigation.navigate('ForgotPasswordScreen');
+  }
+
   return (
     <Screen scrollable>
       <View style={{paddingHorizontal: 24}}>
@@ -38,7 +42,7 @@ export function LoginScreen({navigation}: ScreenProps) {
           boxProps={{mb: 's10'}}
         />
 
-        <Text preset="paragraphSmall" bold color="primary">
+        <Text onPress={navigateToForgotPasswordScreen} preset="paragraphSmall" bold color="primary">
           Esqueci minha senha
         </Text>
 
