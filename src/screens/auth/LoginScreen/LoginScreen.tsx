@@ -7,18 +7,23 @@ import { Screen } from '../../../components/Screen/Screen';
 import { PasswordInput } from '../../../components/PasswordInput/PasswordInput';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../routes/Routes';
+import { Controller, useForm } from 'react-hook-form';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
 
-export function LoginScreen({ navigation }: ScreenProps) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [emailErrorMessage, setEmailErrorMessage] = useState('');
+type LoginFormTypes = {
+  email: string,
+  password: string,
+}
 
-  useEffect(() => {
-    const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
-    setEmailErrorMessage(isValidEmail ? '' : 'E-mail inválido');
-  }, [email])
+export function LoginScreen({ navigation }: ScreenProps) {
+  const { control, handleSubmit, formState } = useForm<LoginFormTypes>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    mode: 'onChange'
+  });
 
   function navigateToSignUpScreen() {
     navigation.navigate('SignUpScreen');
@@ -28,7 +33,7 @@ export function LoginScreen({ navigation }: ScreenProps) {
     navigation.navigate('ForgotPasswordScreen');
   }
 
-  function submitForm() {
+  function submitForm({ email, password }: LoginFormTypes) {
     Alert.alert(`Email: ${email} ${'\n'} Password: ${password}`)
   }
 
@@ -42,32 +47,60 @@ export function LoginScreen({ navigation }: ScreenProps) {
           Digite seu e-mail e senha para entrar
         </Text>
 
-        <TextInput
-          errorMessage={emailErrorMessage}
-          value={email}
-          onChangeText={setEmail}
-          label="E-mail"
-          placeholder="Digite seu e-mail"
-          boxProps={{ mb: 's20' }}
+        <Controller
+          control={control}
+          name="email"
+          rules={{
+            required: 'E-mail obrigatório.',
+            pattern: {
+              value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+              message: 'E-mail inválido.'
+            }
+          }}
+          render={({ field, fieldState }) => (
+            <TextInput
+              errorMessage={fieldState.error?.message}
+              value={field.value}
+              onChangeText={field.onChange}
+              label="E-mail"
+              placeholder="Digite seu e-mail"
+              boxProps={{ mb: 's20' }}
+            />
+          )}
         />
 
-        <PasswordInput
-          value={password}
-          onChangeText={setPassword}
-          label="Senha"
-          placeholder="Digite sua senha"
-          boxProps={{ mb: 's10' }}
+        <Controller
+          control={control}
+          name="password"
+          rules={{
+            required: 'Senha obrigatória.',
+            minLength: {
+              value: 8,
+              message: 'A senha deve ter no mínimo 8 caracteres.'
+            }
+          }}
+          render={({ field, fieldState }) => (
+            <PasswordInput
+              errorMessage={fieldState.error?.message}
+              value={field.value}
+              onChangeText={field.onChange}
+              label="Senha"
+              placeholder="Digite sua senha"
+              boxProps={{ mb: 's10' }}
+            />
+          )}
         />
+
 
         <Text onPress={navigateToForgotPasswordScreen} preset="paragraphSmall" bold color="primary">
           Esqueci minha senha
         </Text>
 
-        <Button 
-          onPress={submitForm} 
-          disabled={!!emailErrorMessage || password.length < 6} 
-          title="Entrar" 
-          mt="s48" 
+        <Button
+          onPress={handleSubmit(submitForm)}
+          disabled={!formState.isValid}
+          title="Entrar"
+          mt="s48"
         />
         <Button
           onPress={navigateToSignUpScreen}
