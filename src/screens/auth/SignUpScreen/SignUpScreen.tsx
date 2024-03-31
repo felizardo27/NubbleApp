@@ -2,12 +2,12 @@ import React from 'react';
 import { Screen } from '../../../components/Screen/Screen';
 import { Text } from '../../../components/Text/Text';
 import { Button } from '../../../components/Button/Button';
-import { PasswordInput } from '../../../components/PasswordInput/PasswordInput';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../routes/Routes';
 import { useResetNavigationSuccess } from '../../../hooks/useResetNavigationSuccess';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { FormTextInput } from '../../../components/Form/FormTextInput';
+import { FormPasswordInput } from '../../../components/Form/FormPasswordInput';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
 
@@ -61,6 +61,7 @@ export function SignUpScreen(props: ScreenProps) {
         rules={{
           required: 'Nome completo obrigatório'
         }}
+        autoCapitalize="words"
         label="Nome completo"
         placeholder="Digite seu nome completo"
         boxProps={{ mb: 's20' }}
@@ -81,8 +82,7 @@ export function SignUpScreen(props: ScreenProps) {
         boxProps={{ mb: 's20' }}
       />
 
-
-      <Controller
+      <FormPasswordInput
         control={control}
         name="password"
         rules={{
@@ -92,16 +92,9 @@ export function SignUpScreen(props: ScreenProps) {
             message: 'A senha deve ter no mínimo 8 caracteres.'
           }
         }}
-        render={({ field, fieldState }) => (
-          <PasswordInput
-            errorMessage={fieldState.error?.message}
-            value={field.value}
-            onChangeText={field.onChange}
-            label="Senha"
-            placeholder="Digite sua senha"
-            boxProps={{ mb: 's48' }}
-          />
-        )}
+        label="Senha"
+        placeholder="Digite sua senha"
+        boxProps={{ mb: 's48' }}
       />
 
       <Button
