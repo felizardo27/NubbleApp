@@ -8,19 +8,15 @@ import { useResetNavigationSuccess } from '../../../hooks/useResetNavigationSucc
 import { useForm } from 'react-hook-form';
 import { FormTextInput } from '../../../components/Form/FormTextInput';
 import { FormPasswordInput } from '../../../components/Form/FormPasswordInput';
+import { signUpSchema, SignUpSchema } from './signUpSchema';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
 
-type SignUpTypes = {
-  username: string,
-  fullName: string,
-  email: string,
-  password: string,
-}
-
 export function SignUpScreen(props: ScreenProps) {
   const { reset } = useResetNavigationSuccess();
-  const { control, formState, handleSubmit } = useForm<SignUpTypes>({
+  const { control, formState, handleSubmit } = useForm<SignUpSchema>({
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
       username: '',
       fullName: '',
@@ -29,7 +25,7 @@ export function SignUpScreen(props: ScreenProps) {
     },
     mode: 'onChange'
   });
-  function submitForm(formValues: SignUpTypes) {
+  function submitForm(formValues: SignUpSchema) {
     console.log(formValues)
     // reset({
     //   title: 'Sua conta foi criada com sucesso!',
@@ -47,9 +43,6 @@ export function SignUpScreen(props: ScreenProps) {
       <FormTextInput
         control={control}
         name="username"
-        rules={{
-          required: 'Username obrigatório'
-        }}
         label="Seu username"
         placeholder="@"
         boxProps={{ mb: 's20' }}
@@ -58,9 +51,6 @@ export function SignUpScreen(props: ScreenProps) {
       <FormTextInput
         control={control}
         name="fullName"
-        rules={{
-          required: 'Nome completo obrigatório'
-        }}
         autoCapitalize="words"
         label="Nome completo"
         placeholder="Digite seu nome completo"
@@ -70,13 +60,6 @@ export function SignUpScreen(props: ScreenProps) {
       <FormTextInput
         control={control}
         name="email"
-        rules={{
-          required: 'E-mail obrigatório.',
-          pattern: {
-            value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-            message: 'E-mail inválido.'
-          }
-        }}
         label="E-mail"
         placeholder="Digite seu e-mail"
         boxProps={{ mb: 's20' }}
@@ -85,13 +68,6 @@ export function SignUpScreen(props: ScreenProps) {
       <FormPasswordInput
         control={control}
         name="password"
-        rules={{
-          required: 'Senha obrigatória.',
-          minLength: {
-            value: 8,
-            message: 'A senha deve ter no mínimo 8 caracteres.'
-          }
-        }}
         label="Senha"
         placeholder="Digite sua senha"
         boxProps={{ mb: 's48' }}
