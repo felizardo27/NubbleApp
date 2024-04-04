@@ -1,7 +1,7 @@
 import {createText} from '@shopify/restyle';
 import React from 'react';
 import {TextStyle} from 'react-native';
-import {Theme} from '../../theme/theme';
+import {Theme} from '@theme';
 
 const SRText = createText<Theme>();
 type SRTextProps = React.ComponentProps<typeof SRText>;

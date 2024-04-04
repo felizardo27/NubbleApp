@@ -5,7 +5,11 @@ module.exports = {
       'module-resolver', {
         root: '.',
         alias: {
-          '@components': './src/components'
+          '@components': './src/components',
+          '@hooks': './src/hooks',
+          '@routes': './src/routes',
+          '@screens': './src/screens',
+          '@theme': './src/theme',
         },
       }
     ],

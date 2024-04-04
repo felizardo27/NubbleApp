@@ -3,8 +3,8 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Text, Button, FormTextInput, FormPasswordInput, Screen } from '@components';
-import { RootStackParamList } from '../../../routes/Routes';
-import { useResetNavigationSuccess } from '../../../hooks/useResetNavigationSuccess';
+import { RootStackParamList } from '@routes';
+import { useResetNavigationSuccess } from '@hooks';
 import { signUpSchema, SignUpSchema } from './signUpSchema';
 
 
