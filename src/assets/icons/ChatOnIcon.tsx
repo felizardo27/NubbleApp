@@ -1,5 +1,7 @@
 import React from 'react';
+
 import {Svg, Path, Circle} from 'react-native-svg';
+
 import {IconBase} from '@components';
 
 export function ChatOnIcon({size = 20, color = '#000'}: IconBase) {
