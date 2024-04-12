@@ -7,5 +7,5 @@ export * from './Icon/Icon';
 export * from './PasswordInput/PasswordInput';
 export * from './Screen/Screen';
 export * from './Screen/ScreenContainer/ScreenContainer';
-export {Text} from './Text/Text';
+export * from './Text/Text';
 export * from './TextInput/TextInput';
