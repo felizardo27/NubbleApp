@@ -16,9 +16,11 @@ export function PostBottom({author, commentCount, text}: Props) {
       <Text semiBold preset="paragraphMedium" color="gray1">
         {text}
       </Text>
-      <Text bold preset="paragraphSmall" color="primary" mt="s8">
-        {textComment}
-      </Text>
+      {textComment && (
+        <Text bold preset="paragraphSmall" color="primary" mt="s8">
+          {textComment}
+        </Text>
+      )}
     </Box>
   );
 }
