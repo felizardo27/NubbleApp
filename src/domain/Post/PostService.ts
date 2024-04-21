@@ -2,8 +2,8 @@ import {PostAdapter} from './PostAdapter';
 import {postApi} from './PostApi';
 import {Post} from './PostTypes';
 
-async function getList(): Promise<Post[]> {
-  const postPageAPI = await postApi.getList();
+async function getList(page: number): Promise<Post[]> {
+  const postPageAPI = await postApi.getList({page, per_page: 10});
 
   // throw new Error();
   // return [];
