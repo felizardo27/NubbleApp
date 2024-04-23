@@ -9,9 +9,26 @@ export function usePosList() {
   const [error, setError] = useState<boolean | null>(null);
   const [page, setPage] = useState(1);
 
-  async function fetchData() {
+  async function fetchInitialData() {
     try {
       setError(null);
+      setLoading(true);
+      const list = await postService.getList(1);
+      setPostList(list);
+      //TODO:
+      setPage(2);
+    } catch (err) {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function fetchNexPage() {
+    if (loading) {
+      return;
+    }
+    try {
       setLoading(true);
       const list = await postService.getList(page);
       setPostList(prev => [...prev, ...list]);
@@ -23,22 +40,15 @@ export function usePosList() {
     }
   }
 
-  function fetchNexPage() {
-    if (!loading) {
-      fetchData();
-    }
-  }
-
   useEffect(() => {
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchInitialData();
   }, []);
 
   return {
     loading,
     error,
     postList,
-    refetch: fetchData,
+    refresh: fetchInitialData,
     fetchNexPage,
   };
 }

@@ -1,5 +1,11 @@
 import React from 'react';
-import {FlatList, ListRenderItemInfo, StyleProp, ViewStyle} from 'react-native';
+import {
+  FlatList,
+  ListRenderItemInfo,
+  RefreshControl,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 
 import {PostItem, Screen} from '@components';
 import {Post, usePosList} from '@domain';
@@ -10,7 +16,7 @@ import {HomeHeader} from './components/HomeHeader';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
-  const {error, loading, postList, refetch, fetchNexPage} = usePosList();
+  const {error, loading, postList, refresh, fetchNexPage} = usePosList();
 
   function renderItem({item}: ListRenderItemInfo<Post>) {
     return <PostItem post={item} />;
@@ -23,11 +29,15 @@ export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id}
         renderItem={renderItem}
+        refreshing={loading}
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={refresh} />
+        }
         onEndReached={fetchNexPage}
         onEndReachedThreshold={0.1}
         ListHeaderComponent={HomeHeader}
         ListEmptyComponent={
-          <HomeEmpty loading={loading} error={error} refetch={refetch} />
+          <HomeEmpty loading={loading} error={error} refetch={refresh} />
         }
         contentContainerStyle={{flex: postList.length === 0 ? 1 : undefined}}
       />

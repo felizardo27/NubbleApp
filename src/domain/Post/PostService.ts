@@ -3,7 +3,7 @@ import {postApi} from './PostApi';
 import {Post} from './PostTypes';
 
 async function getList(page: number): Promise<Post[]> {
-  const postPageAPI = await postApi.getList({page, per_page: 10});
+  const postPageAPI = await postApi.getList({page, per_page: 5});
 
   // throw new Error();
   // return [];
