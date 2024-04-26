@@ -5,7 +5,7 @@ import {Post, PostAPI} from './PostTypes';
  */
 function toPost(postAPI: PostAPI): Post {
   return {
-    id: postAPI.id.toString(),
+    id: postAPI.id,
     text: postAPI.text,
     author: {
       profileURL: postAPI.user.profile_url,
