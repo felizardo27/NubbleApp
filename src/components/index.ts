@@ -13,3 +13,4 @@ export * from './PostItem/components/PostHeader';
 export * from './PostItem/components/PostImage';
 export * from './PostItem/components/PostActions';
 export * from './PostItem/components/PostBottom';
+export * from './ProfileAvatar/ProfileAvatar';
