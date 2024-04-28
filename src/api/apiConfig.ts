@@ -6,6 +6,6 @@ export const api = axios.create({
   // baseURL: 'http://127.0.0.1:3333/',
   headers: {
     Authorization:
-      'Bearer MQ.b69FlW05OnxmlkDX1n3yEAr2QjbISCMjienXWGcxnxAXJSPD1JJg1mEZghbS',
+      'Bearer MQ.Pbq0vZrIvACFKnPvgvnR7EgJaQFT1uNQUhFTYne2z3-pknps0_SRqr1fthFP',
   },
 });

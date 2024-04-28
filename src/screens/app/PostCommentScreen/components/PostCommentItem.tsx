@@ -17,12 +17,12 @@ export function PostCommentItem({postComment}: Props) {
       <Box>
         <ProfileAvatar imageURL={postComment.author.profileURL} />
       </Box>
-      <Box ml="s12">
+      <Box ml="s12" flex={1}>
         <Text preset="paragraphSmall" bold>
           {postComment.author.userName}
         </Text>
         <Text preset="paragraphSmall" color="gray1">
-          {postComment.message} - 3d
+          {postComment.message} - {postComment.createdAtRelative}
         </Text>
       </Box>
     </Box>
