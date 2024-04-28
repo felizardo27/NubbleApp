@@ -9,7 +9,7 @@ export function usePaginatedList<Data>(
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<boolean | null>(null);
   const [page, setPage] = useState(1);
-  const [hasNextPage, setHasNextPage] = useState(true);
+  const [hasNextPage, setHasNextPage] = useState(false);
 
   async function fetchInitialData() {
     try {
@@ -61,5 +61,6 @@ export function usePaginatedList<Data>(
     error,
     refresh: fetchInitialData,
     fetchNexPage,
+    hasNextPage,
   };
 }
