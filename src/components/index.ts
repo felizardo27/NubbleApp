@@ -14,3 +14,4 @@ export * from './PostItem/components/PostImage';
 export * from './PostItem/components/PostActions';
 export * from './PostItem/components/PostBottom';
 export * from './ProfileAvatar/ProfileAvatar';
+export * from './TextMessage/TextMessage';
