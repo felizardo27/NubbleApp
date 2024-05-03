@@ -1,4 +1,6 @@
-import {usePaginatedList, PostCommentService} from '@domain';
+import {usePaginatedList} from '@infra';
+
+import {PostCommentService} from '@domain';
 
 export function usePostCommentList(postId: number) {
   function getList(page: number) {
