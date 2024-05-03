@@ -1,9 +1,3 @@
-export * from './Post/PostTypes';
-export * from './Post/PostService';
-export * from './Post/useCases/usePostList';
-
-export * from './PostComment/PostCommentTypes';
-export * from './PostComment/PostCommentService';
-export * from './PostComment/useCases/usePostCommentList';
-export * from './PostComment/useCases/usePostCommentCreate';
-export * from './PostComment/useCases/usePostCommentRemove';
+export * from './Post';
+export * from './PostComment';
+export * from './Auth';

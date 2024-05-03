@@ -2,14 +2,33 @@ import React from 'react';
 import {Alert} from 'react-native';
 
 import {Box, ProfileAvatar, Text, TouchableOpacityBox} from '@components';
-import {PostComment, usePostCommentRemove} from '@domain';
+import {PostComment, PostCommentService, usePostCommentRemove} from '@domain';
 
 interface Props {
   postComment: PostComment;
+  onRemoveComment: () => void;
+  userId: number;
+  postAuthorId: number;
 }
 
-export function PostCommentItem({postComment}: Props) {
-  const {mutate} = usePostCommentRemove();
+export function PostCommentItem({
+  postComment,
+  onRemoveComment,
+  userId,
+  postAuthorId,
+}: Props) {
+  const {mutate} = usePostCommentRemove({
+    onSuccess: onRemoveComment,
+    onError() {
+      Alert.alert('Você não pode apagar esse comentário');
+    },
+  });
+
+  const allowDelete = PostCommentService.isAllowToDelete(
+    postComment,
+    userId,
+    postAuthorId,
+  );
 
   function confirmRemove() {
     Alert.alert('Deseja remover o comentário?', 'Pressione confirmar', [
@@ -19,13 +38,13 @@ export function PostCommentItem({postComment}: Props) {
       },
       {
         text: 'Cancelar',
-        style: 'cancel',
+        style: 'destructive',
       },
     ]);
   }
 
   return (
-    <TouchableOpacityBox onLongPress={confirmRemove}>
+    <TouchableOpacityBox disabled={!allowDelete} onLongPress={confirmRemove}>
       <Box
         mb="s16"
         flexDirection="row"
