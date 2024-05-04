@@ -1,5 +1,3 @@
-//useMutation
-
 import {useState} from 'react';
 
 export interface MutationOptions<TData> {
