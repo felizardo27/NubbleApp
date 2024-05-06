@@ -4,6 +4,7 @@ import {Pressable} from 'react-native';
 import {useAppTheme} from '@hooks';
 import {ThemeColors} from '@theme';
 
+import {ErrorRound} from '../..//assets/icons/ErrorRound';
 import {ArrowLeftIcon} from '../../assets/icons/ArrowLeftIcon';
 import {ArrowRightIcon} from '../../assets/icons/ArrowRightIcon';
 import {BellIcon} from '../../assets/icons/BellIcon';
@@ -82,6 +83,7 @@ const iconRegistry = {
   checkRound: CheckRoundIcon,
   chevronRight: ChevronRightIcon,
   comment: CommentIcon,
+  errorRound: ErrorRound,
   eyeOff: EyeOffIcon,
   eyeOn: EyeOnIcon,
   flashOff: FlashOffIcon,
