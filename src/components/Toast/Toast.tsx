@@ -12,13 +12,13 @@ import {Text, TextProps} from '../Text/Text';
 const MAX_WIDTH = Dimensions.get('window').width * 0.9;
 
 export function Toast() {
-  const {toast, hiddenToast} = useToast();
+  const {toast, hideToast} = useToast();
 
   useEffect(() => {
     setTimeout(() => {
-      hiddenToast();
+      hideToast();
     }, 2000);
-  }, [toast, hiddenToast]);
+  }, [toast, hideToast]);
 
   if (!toast) {
     return null;
