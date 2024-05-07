@@ -22,7 +22,8 @@ export function PostCommentItem({
   const {showToast} = useToast();
   const {mutate} = usePostCommentRemove({
     onSuccess: () => {
-      onRemoveComment(), showToast({message: 'Cometário deletado'});
+      onRemoveComment();
+      showToast({message: 'Cometário deletado'});
     },
     onError() {
       Alert.alert('Você não pode apagar esse comentário');
