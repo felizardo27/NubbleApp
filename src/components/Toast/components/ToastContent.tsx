@@ -40,8 +40,6 @@ const mapTypeToIcon: Record<ToastType, IconProps> = {
 };
 
 const $boxStyle: BoxProps = {
-  position: 'absolute',
-  alignSelf: 'center',
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'row',
