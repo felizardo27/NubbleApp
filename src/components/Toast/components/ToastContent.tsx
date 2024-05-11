@@ -1,8 +1,7 @@
-/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/react-in-jsx-scope */
 import {Dimensions} from 'react-native';
 
-import {Toast, ToastPosition, ToastType} from '@services';
+import {Toast, ToastType} from '@services';
 
 import {Box, BoxProps, Icon, IconProps, Text, TextProps} from '@components';
 import {$shadowProps} from '@theme';
@@ -13,11 +12,10 @@ interface Props {
 const MAX_WIDTH = Dimensions.get('window').width * 0.9;
 
 export function ToastContent({toast}: Props) {
-  const position: ToastPosition = toast?.position || 'top';
   const type: ToastType = toast?.type || 'success';
 
   return (
-    <Box {...$boxStyle} style={[{[position]: 100}, $shadowProps]}>
+    <Box {...$boxStyle} style={$shadowProps}>
       <Icon {...mapTypeToIcon[type]} />
       <Text {...$textStyle} preset="paragraphMedium" bold ml="s16">
         {toast?.message}
