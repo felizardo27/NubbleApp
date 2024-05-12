@@ -4,7 +4,7 @@ import {Alert} from 'react-native';
 import {useToastService} from '@services';
 
 import {Box, ProfileAvatar, Text, TouchableOpacityBox} from '@components';
-import {PostComment, PostCommentService, usePostCommentRemove} from '@domain';
+import {PostComment, postCommentService, usePostCommentRemove} from '@domain';
 
 interface Props {
   postComment: PostComment;
@@ -30,7 +30,7 @@ export function PostCommentItem({
     },
   });
 
-  const allowDelete = PostCommentService.isAllowToDelete(
+  const allowDelete = postCommentService.isAllowToDelete(
     postComment,
     userId,
     postAuthorId,

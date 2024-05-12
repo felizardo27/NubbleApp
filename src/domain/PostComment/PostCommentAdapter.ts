@@ -1,11 +1,11 @@
 import {dateUtils} from '@utils';
 
-import {PostComment, PostCommentAPI} from './PostCommentTypes';
+import {PostComment, PostCommentAPI} from './postCommentTypes';
 
 /**
  * @description Adapta o PostCommentAPI para o modelo de PostComment
  */
-function toCommentPost(postCommentAPI: PostCommentAPI): PostComment {
+function toPostComment(postCommentAPI: PostCommentAPI): PostComment {
   return {
     id: postCommentAPI.id,
     message: postCommentAPI.message,
@@ -20,4 +20,4 @@ function toCommentPost(postCommentAPI: PostCommentAPI): PostComment {
   };
 }
 
-export const PostCommentAdapter = {toCommentPost};
+export const postCommentAdapter = {toPostComment};

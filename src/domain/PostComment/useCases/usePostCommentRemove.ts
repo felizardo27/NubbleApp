@@ -1,10 +1,10 @@
 import {MutationOptions, useMutation} from '@infra';
 
-import {PostCommentService} from '../PostCommentService';
+import {postCommentService} from '../postCommentService';
 
 export function usePostCommentRemove(option?: MutationOptions<string>) {
   return useMutation<{postCommentId: number}, string>(
-    ({postCommentId}) => PostCommentService.remove(postCommentId),
+    ({postCommentId}) => postCommentService.remove(postCommentId),
     option,
   );
 }

@@ -18,7 +18,7 @@ import {HomeHeader} from './components/HomeHeader';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
-  const {error, loading, list: PostList, refresh, fetchNexPage} = usePosList();
+  const {error, loading, list: PostList, refresh, fetchNextPage} = usePosList();
   const flatListRef = useRef<FlatList<Post>>(null);
   useScrollToTop(flatListRef);
 
@@ -38,7 +38,7 @@ export function HomeScreen({navigation}: AppTabScreenProps<'HomeScreen'>) {
         refreshControl={
           <RefreshControl refreshing={loading} onRefresh={refresh} />
         }
-        onEndReached={fetchNexPage}
+        onEndReached={fetchNextPage}
         onEndReachedThreshold={0.1}
         ListHeaderComponent={HomeHeader}
         ListEmptyComponent={

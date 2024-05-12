@@ -1,14 +1,15 @@
 import {MutationOptions, useMutation} from '@infra';
 
-import {PostCommentService} from '../PostCommentService';
-import {PostComment} from '../PostCommentTypes';
+import {PostComment} from '@domain';
+
+import {postCommentService} from '../postCommentService';
 
 export function usePostCommentCreate(
   postId: number,
   options?: MutationOptions<PostComment>,
 ) {
   const {mutate, loading, error} = useMutation<{message: string}, PostComment>(
-    ({message}) => PostCommentService.create(postId, message),
+    ({message}) => postCommentService.create(postId, message),
     options,
   );
 

@@ -30,7 +30,7 @@ export function usePaginatedList<Data>(
     }
   }
 
-  async function fetchNexPage() {
+  async function fetchNextPage() {
     if (loading || !hasNextPage) {
       return;
     }
@@ -60,7 +60,7 @@ export function usePaginatedList<Data>(
     loading,
     error,
     refresh: fetchInitialData,
-    fetchNexPage,
+    fetchNextPage,
     hasNextPage,
   };
 }

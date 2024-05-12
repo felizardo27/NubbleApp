@@ -20,8 +20,8 @@ export function TextMessage({
   value,
   ...rnTextInputProps
 }: TextMessageProps) {
-  const {colors} = useAppTheme();
   const inputRef = useRef<RNTextInput>(null);
+  const {colors} = useAppTheme();
 
   function focusInput() {
     inputRef.current?.focus();
@@ -30,26 +30,26 @@ export function TextMessage({
   const sendIsDisabled = value?.trim().length === 0;
 
   return (
-    <Pressable onPress={focusInput}>
+    <Pressable onPressIn={focusInput}>
       <Box
+        paddingHorizontal="s16"
+        paddingVertical="s14"
+        backgroundColor="gray5"
         flexDirection="row"
         justifyContent="space-between"
         alignItems="center"
-        backgroundColor="gray5"
-        paddingVertical="s14"
-        paddingHorizontal="s16"
         borderRadius="s12">
         <RNTextInput
           ref={inputRef}
           value={value}
           placeholderTextColor={colors.gray2}
-          style={[$textInputStyle, {color: colors.grayBlack}]}
+          style={[$textInputStyle, {color: colors.gray1}]}
           {...rnTextInputProps}
         />
         <Pressable
           disabled={sendIsDisabled}
           onPress={() => onPressSend(value || '')}>
-          <Text color={sendIsDisabled ? 'gray1' : 'primary'} bold>
+          <Text color={sendIsDisabled ? 'gray2' : 'primary'} bold>
             Enviar
           </Text>
         </Pressable>

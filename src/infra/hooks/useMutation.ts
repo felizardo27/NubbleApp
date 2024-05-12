@@ -5,7 +5,6 @@ export interface MutationOptions<TData> {
   onError?: (message: string) => void;
   errorMessage?: string;
 }
-
 export function useMutation<TVariables, TData>(
   mutationFn: (variables: TVariables) => Promise<TData>,
   options?: MutationOptions<TData>,
@@ -15,17 +14,17 @@ export function useMutation<TVariables, TData>(
 
   async function mutate(variables: TVariables) {
     try {
-      setError(null);
       setLoading(true);
-      const postComment = await mutationFn(variables);
+      setError(null);
+      const data = await mutationFn(variables);
       if (options?.onSuccess) {
-        options.onSuccess(postComment);
+        options.onSuccess(data);
       }
-    } catch (e) {
-      setError(true);
+    } catch (mutateError) {
       if (options?.onError) {
         options.onError(options?.errorMessage || '');
       }
+      setError(true);
     } finally {
       setLoading(false);
     }
