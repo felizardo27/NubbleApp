@@ -1,6 +1,6 @@
 import {api, PageAPI, PageParams} from '@api';
 
-import {PostCommentAPI} from './postCommentTypes';
+import {PostCommentAPI} from './PostCommentTypes';
 
 const PATH_POST_COMMENT = 'user/post_comment';
 

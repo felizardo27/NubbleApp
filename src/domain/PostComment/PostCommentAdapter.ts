@@ -1,6 +1,6 @@
 import {dateUtils} from '@utils';
 
-import {PostComment, PostCommentAPI} from './postCommentTypes';
+import {PostComment, PostCommentAPI} from './PostCommentTypes';
 
 /**
  * @description Adapta o PostCommentAPI para o modelo de PostComment
