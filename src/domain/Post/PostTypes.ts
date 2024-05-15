@@ -12,7 +12,6 @@ export interface Post {
   commentCount: number;
   favoriteCount: number;
 }
-
 export interface PostAPI {
   id: number; // 1,
   text: string; // "Bom dia!",

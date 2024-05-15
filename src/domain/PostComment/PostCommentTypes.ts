@@ -10,7 +10,6 @@ export interface PostComment {
     userName: string;
   };
 }
-
 export interface PostCommentAPI {
   id: number; // 115;
   message: string; // 'Verecundia nulla vicinus.';

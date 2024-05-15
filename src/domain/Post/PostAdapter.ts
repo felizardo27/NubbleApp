@@ -1,4 +1,4 @@
-import {Post, PostAPI} from './PostTypes';
+import {Post, PostAPI} from './postTypes';
 
 /**
  * @description Adapta o PostAPI para o modelo de Post
@@ -20,4 +20,4 @@ function toPost(postAPI: PostAPI): Post {
   };
 }
 
-export const PostAdapter = {toPost};
+export const postAdapter = {toPost};

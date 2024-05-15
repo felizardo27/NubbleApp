@@ -2,7 +2,7 @@ import {MutationOptions, useMutation} from '@infra';
 
 import {PostComment} from '@domain';
 
-import {postCommentService} from '../PostCommentService';
+import {postCommentService} from '../postCommentService';
 
 export function usePostCommentCreate(
   postId: number,
