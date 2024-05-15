@@ -1,6 +1,6 @@
 export * from './useCases/usePostList';
 
-export * from './PostAdapter';
-export * from './PostApi';
-export * from './PostService';
-export * from './PostTypes';
+export * from './postAdapter';
+export * from './postApi';
+export * from './postService';
+export * from './postTypes';
