@@ -1,7 +1,7 @@
-import {usePaginatedList} from '@infra';
+import {QueryKeys, usePaginatedList} from '@infra';
 
-import {postService} from '@domain';
+import {Post, postService} from '@domain';
 
 export function usePosList() {
-  return usePaginatedList(postService.getList);
+  return usePaginatedList<Post>([QueryKeys.PostList], postService.getList);
 }
