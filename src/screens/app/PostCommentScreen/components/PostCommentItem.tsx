@@ -7,22 +7,21 @@ import {Box, ProfileAvatar, Text, TouchableOpacityBox} from '@components';
 import {PostComment, postCommentService, usePostCommentRemove} from '@domain';
 
 interface Props {
+  postId: number;
   postComment: PostComment;
-  onRemoveComment: () => void;
   userId: number;
   postAuthorId: number;
 }
 
 export function PostCommentItem({
+  postId,
   postComment,
-  onRemoveComment,
   userId,
   postAuthorId,
 }: Props) {
   const {showToast} = useToastService();
-  const {mutate} = usePostCommentRemove({
+  const {mutate} = usePostCommentRemove(postId, {
     onSuccess: () => {
-      onRemoveComment();
       showToast({message: 'Cometário deletado', position: 'bottom'});
     },
     onError() {
