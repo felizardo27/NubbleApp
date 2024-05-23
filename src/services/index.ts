@@ -1,3 +1,3 @@
-export * from './useToast';
-export * from './useAuthCredentials';
+export * from './toast';
+export * from './authCredentials';
 export * from './storage';
