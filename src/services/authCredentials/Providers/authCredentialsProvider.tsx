@@ -28,7 +28,6 @@ export function AuthCredentialsProvider({
   async function startAuthCredentials() {
     try {
       const ac = await authCredentialsStorage.get();
-      console.log(ac);
       if (ac) {
         authService.updateToken(ac.token);
         setAuthCredentials(ac);
