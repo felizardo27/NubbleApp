@@ -47,6 +47,7 @@ export function AuthCredentialsProvider({
 
   async function removeCredentials(): Promise<void> {
     authService.removeToken();
+    authCredentialsStorage.remove();
     setAuthCredentials(null);
   }
 
