@@ -9,8 +9,9 @@ import {
   FormTextInput,
   FormPasswordInput,
   Screen,
+  ActivityIndicator,
 } from '@components';
-import {useAuthSignUp} from '@domain';
+import {useAuthSignUp, useAuthIsUsernameAvailable} from '@domain';
 import {useResetNavigationSuccess} from '@hooks';
 import {AuthScreenProps, AuthStackParamList} from '@routes';
 
@@ -40,7 +41,7 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
     },
   });
   const {reset} = useResetNavigationSuccess();
-  const {control, formState, handleSubmit} = useForm<SignUpSchema>({
+  const {control, formState, handleSubmit, watch} = useForm<SignUpSchema>({
     resolver: zodResolver(signUpSchema),
     defaultValues,
     mode: 'onChange',
@@ -48,6 +49,9 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
   function submitForm(formValues: SignUpSchema) {
     signUp(formValues);
   }
+
+  const username = watch('username');
+  const usernameQuery = useAuthIsUsernameAvailable({username});
   return (
     <Screen canGoBack scrollable>
       <Text preset="headingLarge">Criar uma conta</Text>
@@ -58,6 +62,11 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
         label="Seu username"
         placeholder="@"
         boxProps={{mb: 's20'}}
+        rightComponent={
+          usernameQuery.isFetching ? (
+            <ActivityIndicator size="small" />
+          ) : undefined
+        }
       />
 
       <FormTextInput
