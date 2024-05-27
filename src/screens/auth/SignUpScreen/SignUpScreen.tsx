@@ -10,6 +10,7 @@ import {
   FormPasswordInput,
   Screen,
   ActivityIndicator,
+  Icon,
 } from '@components';
 import {useAuthSignUp, useAuthIsUsernameAvailable} from '@domain';
 import {useResetNavigationSuccess} from '@hooks';
@@ -67,11 +68,18 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
         name="username"
         label="Seu username"
         placeholder="@"
+        errorMessage={
+          usernameQuery.isUnavailable ? 'username indisponível' : undefined
+        }
         boxProps={{mb: 's20'}}
         rightComponent={
           usernameQuery.isFetching ? (
             <ActivityIndicator size="small" />
-          ) : undefined
+          ) : usernameQuery.isUnavailable || !usernameValid ? (
+            <Icon name="errorRound" color="redError" size={20} />
+          ) : (
+            <Icon name="checkRound" color="greenSuccess" size={20} />
+          )
         }
       />
 
@@ -112,7 +120,11 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
       <Button
         loading={isLoading}
         onPress={handleSubmit(submitForm)}
-        disabled={!formState.isValid || usernameQuery.isFetching}
+        disabled={
+          !formState.isValid ||
+          usernameQuery.isFetching ||
+          usernameQuery.isUnavailable
+        }
         title="Criar minha conta"
       />
     </Screen>
