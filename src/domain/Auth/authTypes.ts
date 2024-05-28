@@ -37,3 +37,7 @@ export interface FieldIsAvailableAPI {
   message: string;
   isAvailable: boolean;
 }
+
+export interface ForgotPasswordAPI {
+  email: string;
+}
