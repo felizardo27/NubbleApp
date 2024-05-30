@@ -40,6 +40,10 @@ async function refreshToken(token: string): Promise<AuthCredentialsApi> {
   return response.data;
 }
 
+/**
+ * @param axiosConfig [AxiosRequestConfig](https://axios-http.com/docs/req_config) - The Axios request configuration
+ * @returns  Check the config URL property to returns if is a refresh token request
+ */
 function isRefreshTokenRequest(response: AxiosRequestConfig): boolean {
   const url = response.url;
   return url === REFRESH_TOKEN_URL;
