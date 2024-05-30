@@ -5,6 +5,7 @@ import {api} from '@api';
 
 import {AuthCredentials, authService} from '@domain';
 
+import {authApi} from '../../../domain/Auth/authApi';
 import {authCredentialsStorage} from '../authCredentialsStorage';
 import {AuthCredentialsService} from '../authCredentialsType';
 
@@ -32,11 +33,20 @@ export function AuthCredentialsProvider({
       response => response,
       async responseError => {
         if (responseError.response.status === 401) {
-          if (!authCredentials?.refreshToken) {
+          const failedRequest = responseError.config;
+          const hasNotRefreshToken = !authCredentials?.refreshToken;
+          const isRefreshTokenRequest =
+            authApi.isRefreshTokenRequest(failedRequest);
+          if (
+            hasNotRefreshToken ||
+            isRefreshTokenRequest ||
+            failedRequest.sent
+          ) {
             removeCredentials();
             return Promise.reject(responseError);
           }
-          const failedRequest = responseError.config;
+
+          failedRequest.sent = true;
 
           const newAuthCredentials =
             await authService.authenticateByRefreshToken(
