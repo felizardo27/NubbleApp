@@ -30,6 +30,13 @@ async function signUp(data: SignUpDataAPI): Promise<UserAPI> {
   return response.data;
 }
 
+async function refreshToken(token: string): Promise<AuthCredentialsApi> {
+  const response = await api.post<AuthCredentialsApi>('auth/refresh-token', {
+    refreshToken: token,
+  });
+  return response.data;
+}
+
 async function isUserNameAvailable(params: {
   username: string;
 }): Promise<FieldIsAvailableAPI> {
@@ -66,6 +73,7 @@ export const authApi = {
   signIn,
   signOut,
   signUp,
+  refreshToken,
   isUserNameAvailable,
   isEmailAvailable,
   forgotPassword,

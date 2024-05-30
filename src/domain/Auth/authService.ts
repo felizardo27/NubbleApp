@@ -41,6 +41,13 @@ async function requestNewPassword(email: string): Promise<string> {
   return message;
 }
 
+async function authenticateByRefreshToken(
+  refreshToken: string,
+): Promise<AuthCredentials> {
+  const acAPI = await authApi.refreshToken(refreshToken);
+  return authAdapter.toAuthCredentials(acAPI);
+}
+
 function updateToken(token: string) {
   api.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
@@ -58,4 +65,5 @@ export const authService = {
   updateToken,
   removeToken,
   requestNewPassword,
+  authenticateByRefreshToken,
 };
