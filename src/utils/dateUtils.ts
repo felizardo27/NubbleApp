@@ -2,7 +2,7 @@ import {parseISO, differenceInSeconds, format} from 'date-fns';
 
 function formatRelative(dataISO: string) {
   const date = parseISO(dataISO);
-  const now = new Date();
+  const now = Date.now();
 
   const diffInSeconds = differenceInSeconds(now, date);
   if (diffInSeconds < 60) {
