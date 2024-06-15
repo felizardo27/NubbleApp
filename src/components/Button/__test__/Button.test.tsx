@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 
+import {ReactTestInstance} from 'react-test-renderer';
 import {fireEvent, render, screen} from 'test-utils';
 
 import {theme} from '@theme';
@@ -10,10 +11,14 @@ import {Button, ButtonProps} from '../Button';
 function renderComponent(props: Partial<ButtonProps>) {
   render(<Button title="Button title" {...props} />);
 
-  const titleElement = screen.getByText(/button title/i);
+  const titleElement = screen.queryByText(/button title/i);
+  const buttonElement = screen.getByTestId('button');
+  const loadingElement = screen.queryByTestId('activity-indicator');
 
   return {
     titleElement,
+    loadingElement,
+    buttonElement,
   };
 }
 
@@ -21,11 +26,14 @@ describe('<Button />', () => {
   it('calls the onPress function when it pressed', () => {
     const mockedOnPress = jest.fn();
 
-    const {titleElement} = renderComponent({onPress: mockedOnPress});
+    const {titleElement, loadingElement} = renderComponent({
+      onPress: mockedOnPress,
+    });
 
-    fireEvent.press(titleElement);
+    fireEvent.press(titleElement as ReactTestInstance);
 
     expect(mockedOnPress).toHaveBeenCalled();
+    expect(loadingElement).toBeFalsy();
   });
 
   it('does not call onPress function when it is disabled and it pressed', () => {
@@ -36,7 +44,7 @@ describe('<Button />', () => {
       disabled: true,
     });
 
-    fireEvent.press(titleElement);
+    fireEvent.press(titleElement as ReactTestInstance);
 
     expect(mockedOnPress).not.toHaveBeenCalled();
   });
@@ -46,8 +54,48 @@ describe('<Button />', () => {
       disabled: true,
     });
 
-    const titleStyle = StyleSheet.flatten(titleElement.props.style);
+    const titleStyle = StyleSheet.flatten(titleElement?.props.style);
 
     expect(titleStyle.color).toEqual(theme.colors.gray2);
   });
+
+  describe('When button is loading:', () => {
+    it('shows activity indicator', () => {
+      const {loadingElement} = renderComponent({loading: true});
+
+      expect(loadingElement).toBeTruthy();
+    });
+
+    it('hides button title', () => {
+      const {titleElement} = renderComponent({loading: true});
+
+      expect(titleElement).toBeFalsy();
+    });
+
+    it('disables onPress function', () => {
+      const mockedOnPress = jest.fn();
+      const {buttonElement} = renderComponent({
+        loading: true,
+        onPress: mockedOnPress,
+      });
+
+      fireEvent.press(buttonElement);
+
+      expect(mockedOnPress).not.toHaveBeenCalled();
+    });
+  });
+
+  // test('when button is loading: It shows activity indicator, it hides button title, and disables onPress function', () => {
+  //   const mockedOnPress = jest.fn();
+  //   const {loadingElement, titleElement, buttonElement} = renderComponent({
+  //     loading: true,
+  //     onPress: mockedOnPress,
+  //   });
+
+  //   fireEvent.press(buttonElement);
+
+  //   expect(loadingElement).toBeTruthy();
+  //   expect(titleElement).toBeFalsy();
+  //   expect(mockedOnPress).not.toHaveBeenCalled();
+  // });
 });
