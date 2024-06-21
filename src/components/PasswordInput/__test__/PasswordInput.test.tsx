@@ -21,8 +21,6 @@ describe('<PasswordInput />', () => {
     const inputElement = screen.getByPlaceholderText(/password/);
 
     expect(inputElement.props.secureTextEntry).toBeTruthy();
-
-    // screen.debug();
   });
 
   it('when press the eye icon, it should show the password, and change to the eye off icon', () => {
