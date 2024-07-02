@@ -37,10 +37,9 @@ describe('useAuthSignIn', () => {
     expect(mockedSaveCredentials).toHaveBeenCalledWith(mockedAuthCredentials);
   });
 
-  it('calls the onError function with a message if sign-in fails', () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const {result} = renderHook(() => useAuthSignIn(), {
-      wrapper: AllTheProviders,
-    });
-  });
+  // it('calls the onError function with a message if sign-in fails', () => {
+  //   const {result} = renderHook(() => useAuthSignIn(), {
+  //     wrapper: AllTheProviders,
+  //   });
+  // });
 });
