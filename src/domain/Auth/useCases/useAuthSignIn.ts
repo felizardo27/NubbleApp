@@ -21,6 +21,9 @@ export function useAuthSignIn(options?: MutationOptions<AuthCredentials>) {
       }
     },
     onSuccess: credentials => {
+      if (options?.onSuccess) {
+        options.onSuccess(credentials);
+      }
       saveCredentials(credentials);
     },
   });
@@ -29,5 +32,6 @@ export function useAuthSignIn(options?: MutationOptions<AuthCredentials>) {
     isLoading: mutation.isLoading,
     signIn: (variables: Variables) => mutation.mutate(variables),
     isSuccess: mutation.isSuccess,
+    isError: mutation.isError,
   };
 }
