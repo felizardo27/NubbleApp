@@ -2,6 +2,9 @@ module.exports = {
   preset: 'react-native',
   setupFiles: ['<rootDir>/src/test/jestSetup.ts'],
   modulePathIgnorePatterns: ['.*/mockedData/.*'],
+  transformIgnorePatterns: [
+    'node_modules/(?!((jest-)?react-native|@react-native(-community)?|react-native-safe-area-context)/)',
+  ],
   collectCoverageFrom: [
     'src/{components,utils,hooks,domain}/**/*.{js,jsx,ts,tsx}',
   ],
