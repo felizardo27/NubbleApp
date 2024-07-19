@@ -9,7 +9,7 @@ import {PostComment, postCommentService, usePostCommentRemove} from '@domain';
 interface Props {
   postId: number;
   postComment: PostComment;
-  userId: number;
+  userId: number | null;
   postAuthorId: number;
 }
 
