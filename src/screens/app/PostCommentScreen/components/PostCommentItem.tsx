@@ -49,7 +49,10 @@ export function PostCommentItem({
   }
 
   return (
-    <TouchableOpacityBox disabled={!allowDelete} onLongPress={confirmRemove}>
+    <TouchableOpacityBox
+      testID="post-comment-id"
+      disabled={!allowDelete}
+      onLongPress={confirmRemove}>
       <Box
         mb="s16"
         flexDirection="row"

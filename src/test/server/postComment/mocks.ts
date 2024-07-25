@@ -23,6 +23,8 @@ const postCommentAPI: PostCommentAPI = {
     is_online: false,
     full_name: 'Marcelo Tavares',
   },
+
+  meta: {},
 };
 
 const mockedPostCommentResponse: PageAPI<PostCommentAPI> = {
@@ -43,4 +45,5 @@ const mockedPostCommentResponse: PageAPI<PostCommentAPI> = {
 export const mockedData = {
   POST_ID,
   mockedPostCommentResponse,
+  postCommentAPI,
 };
