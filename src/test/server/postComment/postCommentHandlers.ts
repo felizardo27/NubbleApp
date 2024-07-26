@@ -1,18 +1,17 @@
 import {BASE_URL, PageAPI} from '@api';
 import {http, HttpResponse} from 'msw';
 
-import {PostCommentAPI, PATH_POST_COMMENT} from '@domain';
+import {PostCommentAPI, POST_COMMENT_PATH} from '@domain';
 
 import {mockedData} from './mocks';
 
-const FULL_URL = `${BASE_URL}${PATH_POST_COMMENT}`;
+const FULL_URL = `${BASE_URL}${POST_COMMENT_PATH}`;
 
 let inMemoryResponse = {...mockedData.mockedPostCommentResponse};
 
 export const postCommentHandlers = [
-  http.get(`${FULL_URL}`, async () => {
-    const response: PageAPI<PostCommentAPI> =
-      mockedData.mockedPostCommentResponse;
+  http.get(FULL_URL, async () => {
+    const response: PageAPI<PostCommentAPI> = inMemoryResponse;
 
     return HttpResponse.json(response, {status: 200});
   }),
