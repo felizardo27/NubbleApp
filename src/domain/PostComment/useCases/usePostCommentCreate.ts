@@ -1,4 +1,4 @@
-import {QueryKeys, MutationOptions} from '@infra';
+import {MutationOptions, QueryKeys} from '@infra';
 import {useMutation, useQueryClient} from '@tanstack/react-query';
 
 import {PostComment} from '@domain';
@@ -28,7 +28,7 @@ export function usePostCommentCreate(
     },
     onError: () => {
       if (options?.onError) {
-        options.onError(options.errorMessage || 'ocorreu um erro');
+        options.onError(options?.errorMessage || 'ocorreu um erro');
       }
     },
   });
