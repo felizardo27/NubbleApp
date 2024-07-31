@@ -1,6 +1,7 @@
 import React from 'react';
 
-import {server} from '@test';
+import {authCredentialsStorage} from '@services';
+import {mockedPostComment, server} from '@test';
 import {fireEvent, renderScreen, screen} from 'test-utils';
 
 import {PostCommentScreen} from '../../PostCommentScreen';
@@ -46,6 +47,38 @@ describe('integration: PostCommentScreen', () => {
 
     const comments = await screen.findAllByTestId('post-comment-id');
 
-    expect(comments.length).toBe(2);
+    expect(comments.length).toBe(3);
+  });
+
+  test('When DELETING a comment, the list is automatically updated and toast message is displayed', () => {
+    jest
+      .spyOn(authCredentialsStorage, `get`)
+      .mockResolvedValue(mockedPostComment.mateusAuthCredentials);
+
+    renderScreen(
+      <PostCommentScreen
+        navigation={{} as any}
+        route={{
+          name: 'PostCommentScreen',
+          key: 'PostCommentScreen',
+          params: {
+            postId: 1,
+            postAuthorId: 1,
+          },
+        }}
+      />,
+    );
+
+    // esperar a lista carregar
+
+    // identificar o comentario que sera deletado
+
+    // long press no comentario
+
+    // pressionar em "confirmar" no alert
+
+    // verificar se a lista foi atualizada (comentario sumiu)
+
+    // verificar se foi exibida a toast message
   });
 });
