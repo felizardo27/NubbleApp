@@ -24,7 +24,7 @@ jobs:
         run: npm run lint
 
       - name: Run TypeScript compiler
-        run: npx tsc --noEmit
+        run: yarn tsc --noEmit
 
       - name: Run test
         run: npm run test
