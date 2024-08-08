@@ -2,8 +2,9 @@ name: Pull Request Checks
 
 on:
   pull_request:
-    branches: -main
-      -develop
+    branches:
+      - main
+      - develop
 
 jobs:
   pull-request-checks:
@@ -17,13 +18,13 @@ jobs:
           node-version: '20'
 
       - name: Install Packages
-        run: npm install
+        run: yarn install
 
       - name: Run Lint
-        run: npm run lint
+        run: yarn lint
 
       - name: Run TypeScript compiler
-        run: npx tsc --noEmit
+        run: yarn tsc --noEmit
 
       - name: Run test
-        run: npm run test
+        run: yarn test
