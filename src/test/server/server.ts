@@ -1,8 +1,8 @@
 import {setupServer} from 'msw/node';
 
-import {postCommentHandlers} from './PostComment/postCommentHandlers';
+import {postCommentHandlers} from './postComment/postCommentHandlers';
 
 export const server = setupServer(...postCommentHandlers);
 
 export {mockedData as mockedPostComment} from './postComment/mocks';
-export {resetInMemoryResponse} from './PostComment/postCommentHandlers';
+export {resetInMemoryResponse} from './postComment/postCommentHandlers';
