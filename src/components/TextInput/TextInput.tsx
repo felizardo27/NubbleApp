@@ -12,9 +12,10 @@ import {useAppTheme} from '@hooks';
 import {$fontFamily, $fontSizes} from '../Text/Text';
 
 export interface TextInputProps extends RNTextInputProps {
-  label: string;
+  label?: string;
   errorMessage?: string;
   rightComponent?: React.ReactElement;
+  leftComponent?: React.ReactElement;
   boxProps?: BoxProps;
 }
 
@@ -22,6 +23,7 @@ export function TextInput({
   label,
   errorMessage,
   rightComponent,
+  leftComponent,
   boxProps,
   ...rnTextInputProps
 }: TextInputProps) {
@@ -40,12 +42,19 @@ export function TextInput({
     inputRef.current?.focus();
   }
   return (
-    <Box {...boxProps}>
+    <Box flexGrow={1} flexShrink={1} {...boxProps}>
       <Pressable onPress={focusInput}>
-        <Text preset="paragraphMedium" mb="s4">
-          {label}
-        </Text>
+        {label && (
+          <Text preset="paragraphMedium" mb="s4">
+            {label}
+          </Text>
+        )}
         <Box {...$textInputContainer}>
+          {leftComponent && (
+            <Box justifyContent="center" mr="s16">
+              {leftComponent}
+            </Box>
+          )}
           <RNTextInput
             autoCapitalize="none"
             ref={inputRef}
