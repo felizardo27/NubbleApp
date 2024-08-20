@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
 import {Icon, Screen, Text, TextInput} from '@components';
-import {AppScreenProps} from '@routes';
-import {useDebounce} from '@hooks';
 import {useUserSearch} from '@domain';
+import {useDebounce} from '@hooks';
+import {AppScreenProps} from '@routes';
 
 export function SearchScreen({}: AppScreenProps<'SearchScreen'>) {
   const [search, setSearch] = useState('');
