@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {FlatList, ListRenderItemInfo} from 'react-native';
 
+import {useSearchHistoryService} from '@services';
+
 import {Icon, ProfileUser, Screen, TextInput} from '@components';
 import {User, useUserSearch} from '@domain';
 import {useDebounce} from '@hooks';
@@ -13,9 +15,18 @@ export function SearchScreen({}: AppScreenProps<'SearchScreen'>) {
   const searchDebounce = useDebounce(search);
 
   const {list} = useUserSearch(searchDebounce);
+  const {addUser} = useSearchHistoryService();
 
   function renderItem({item}: ListRenderItemInfo<User>) {
-    return <ProfileUser user={item} />;
+    return (
+      <ProfileUser
+        onPress={() => addUser(item)}
+        user={item}
+        avatarProps={{
+          size: 48,
+        }}
+      />
+    );
   }
 
   return (

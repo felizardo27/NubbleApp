@@ -8,14 +8,24 @@ import {
   ProfileAvatar,
   PressableBox,
   PressableBoxProps,
+  ProfileAvatarProps,
+  Box,
 } from '@components';
 import {User} from '@domain';
 
 type Props = {
   user: Pick<User, 'username' | 'profileUrl' | 'id'>;
+  avatarProps?: Omit<Partial<ProfileAvatarProps>, 'imageURL'>;
+  RightComponent?: React.ReactElement;
 } & PressableBoxProps;
 
-export function ProfileUser({user, onPress, ...pressableBoxProps}: Props) {
+export function ProfileUser({
+  user,
+  onPress,
+  avatarProps,
+  RightComponent: RigthComponent,
+  ...pressableBoxProps
+}: Props) {
   const navigation = useNavigation();
 
   function handleOnPress(event: GestureResponderEvent) {
@@ -29,13 +39,17 @@ export function ProfileUser({user, onPress, ...pressableBoxProps}: Props) {
     <PressableBox
       flexDirection="row"
       alignItems="center"
+      justifyContent="space-between"
       mb="s16"
       onPress={handleOnPress}
       {...pressableBoxProps}>
-      <ProfileAvatar imageURL={user.profileUrl} />
-      <Text preset="paragraphMedium" semiBold ml="s12">
-        {user.username}
-      </Text>
+      <Box flexDirection="row" alignItems="center">
+        <ProfileAvatar {...avatarProps} imageURL={user.profileUrl} />
+        <Text preset="paragraphMedium" semiBold ml="s12">
+          {user.username}
+        </Text>
+      </Box>
+      {RigthComponent}
     </PressableBox>
   );
 }
