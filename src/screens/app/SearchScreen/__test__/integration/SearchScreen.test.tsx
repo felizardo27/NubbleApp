@@ -8,6 +8,7 @@ import {AppStack} from '@routes';
 
 beforeAll(() => {
   server.listen();
+  jest.useFakeTimers();
   jest
     .spyOn(authCredentialsStorage, 'get')
     .mockResolvedValue(mockUtils.mateusAuthCredentials);
@@ -19,6 +20,7 @@ afterEach(() => {
 
 afterAll(() => {
   server.close();
+  jest.useRealTimers();
   jest.resetAllMocks();
 });
 
@@ -34,6 +36,6 @@ describe('integration: SearchScreen', () => {
     const user2 = await screen.findByText(userMocked.user2.username);
     expect(user2).toBeTruthy();
 
-    screen.debug();
+    fireEvent.press(user1);
   });
 });
