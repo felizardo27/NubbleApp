@@ -2,9 +2,9 @@ import React from 'react';
 import {Alert, AlertButton} from 'react-native';
 
 import {authCredentialsStorage} from '@services';
-import {server, mockedPostComment, resetInMemoryResponse} from '@test';
+import {mockedPostComment, server, resetInMemoryResponse} from '@test';
+import {act} from 'react-test-renderer';
 import {
-  act,
   fireEvent,
   renderScreen,
   screen,
@@ -31,7 +31,7 @@ afterAll(() => {
 });
 
 describe('integration: PostCommentScreen', () => {
-  test('When ADDING a comment, the list is automatically updated', async () => {
+  test('When ADDING a comment the list is automatically updated', async () => {
     renderScreen(
       <PostCommentScreen
         navigation={{} as any}
@@ -68,15 +68,15 @@ describe('integration: PostCommentScreen', () => {
     expect(comments.length).toBe(3);
   });
 
-  test('When DELETING a comment, the list is automatically updated and a toast message is displayed ', async () => {
+  test('When DELETING a comment, the list is automatically updated and toast message is displayed', async () => {
     jest
-      .spyOn(authCredentialsStorage, 'get')
+      .spyOn(authCredentialsStorage, `get`)
       .mockResolvedValue(mockedPostComment.mateusAuthCredentials);
 
     let mockedConfirm: AlertButton['onPress'];
     const mockedAlert = jest
       .spyOn(Alert, 'alert')
-      .mockImplementation((title, message, buttons) => {
+      .mockImplementationOnce((title, message, buttons) => {
         if (buttons && buttons[0]) {
           mockedConfirm = buttons[0].onPress;
         }
@@ -97,7 +97,8 @@ describe('integration: PostCommentScreen', () => {
     );
 
     // esperar a lista carregar
-    // identificar o comentário que será deletado
+    // identificar o comentario que sera deletado
+
     const comment = await screen.findByText(
       mockedPostComment.mateusPostCommentAPI.message,
       {exact: false},
@@ -105,7 +106,8 @@ describe('integration: PostCommentScreen', () => {
 
     expect(comment).toBeTruthy();
 
-    // long press no comentário
+    // long press no comentario
+
     fireEvent(comment, 'longPress');
 
     expect(mockedAlert).toHaveBeenCalled();
@@ -113,7 +115,7 @@ describe('integration: PostCommentScreen', () => {
     // pressionar em "confirmar" no alert
     mockedConfirm && mockedConfirm();
 
-    // verificar se a list foi atualizada (meu comentário sumiu)
+    // verificar se a lista foi atualizada (comentario sumiu)
     await waitForElementToBeRemoved(() =>
       screen.getByText(mockedPostComment.mateusPostCommentAPI.message, {
         exact: false,
@@ -125,13 +127,10 @@ describe('integration: PostCommentScreen', () => {
     expect(comments.length).toBe(1);
 
     // verificar se foi exibida a toast message
-
     await waitFor(() =>
       expect(screen.getByTestId('toast-message')).toBeTruthy(),
     );
-
     act(() => jest.runAllTimers());
-
     expect(screen.queryByTestId('toast-message')).toBeNull();
   });
 });
