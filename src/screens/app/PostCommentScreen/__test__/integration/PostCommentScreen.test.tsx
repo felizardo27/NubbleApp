@@ -122,9 +122,10 @@ describe('integration: PostCommentScreen', () => {
       }),
     );
 
-    const comments = await screen.findAllByTestId('post-comment-id');
-    console.log(screen.getAllByTestId('post-comment-id').length);
-    expect(comments.length).toBe(1);
+    await waitFor(() => {
+      const comments = screen.getAllByTestId('post-comment-id');
+      expect(comments.length).toBe(1);
+    });
 
     // verificar se foi exibida a toast message
     await waitFor(() =>
