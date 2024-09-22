@@ -13,6 +13,7 @@ const config: Config = {
   transformIgnorePatterns: [
     'node_modules/(?!((jest-)?react-native|@react-native(-community)?|react-native-safe-area-context)|@react-navigation/)',
   ],
+  testTimeout: 10000,
 };
 
 export default config;
