@@ -3,7 +3,7 @@ import {ImageBackground, StyleSheet} from 'react-native';
 import {Box, BoxProps, Button, Icon, Text} from '@components';
 
 interface Props {
-  imageUri: string;
+  imageUri?: string;
   imageWidth: number;
 }
 
