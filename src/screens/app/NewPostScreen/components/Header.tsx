@@ -1,5 +1,7 @@
 import {ImageBackground, StyleSheet} from 'react-native';
 
+import {useNavigation} from '@react-navigation/native';
+
 import {Box, BoxProps, Button, Icon, Text} from '@components';
 
 interface Props {
@@ -8,6 +10,14 @@ interface Props {
 }
 
 export function Header({imageUri, imageWidth}: Props) {
+  const navigation = useNavigation();
+
+  function navigateToPublishScreen() {
+    if (imageUri) {
+      navigation.navigate('PublishPostScreen', {imageUri});
+    }
+  }
+
   return (
     <Box>
       <ImageBackground
@@ -19,7 +29,14 @@ export function Header({imageUri, imageWidth}: Props) {
           },
           styles.imageBackground,
         ]}>
-        <Button preset="ghost" title="Escolher essa" mb="s24" />
+        {Boolean(imageUri) && (
+          <Button
+            onPress={navigateToPublishScreen}
+            preset="ghost"
+            title="Escolher essa"
+            mb="s24"
+          />
+        )}
       </ImageBackground>
       <Box {...$boxStyle}>
         <Text preset="headingSmall" bold>
