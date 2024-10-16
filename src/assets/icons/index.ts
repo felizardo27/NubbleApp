@@ -5,6 +5,7 @@ export * from './BellOnIcon';
 export * from './BookmarkFillIcon';
 export * from './BookmarkIcon';
 export * from './CameraIcon';
+export * from './CameraClick';
 export * from './ChatIcon';
 export * from './ChatOnIcon';
 export * from './CheckIcon';
