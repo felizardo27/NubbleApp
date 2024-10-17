@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Dimensions, StyleSheet} from 'react-native';
 
-import {Box, BoxProps, Icon} from '@components';
+import {Box, BoxProps, Icon, PermissionManager} from '@components';
 import {useAppSafeArea} from '@hooks';
 import {AppScreenProps} from '@routes';
 
@@ -18,30 +18,33 @@ export function CameraScreen({navigation}: AppScreenProps<'CameraScreen'>) {
   }
 
   return (
-    <Box flex={1}>
-      <Box backgroundColor="grayWhite" style={StyleSheet.absoluteFill} />
-
-      <Box flex={1} justifyContent="space-between">
-        <Box {...$controlAreaTop} style={{paddingTop: top}}>
-          <Icon
-            size={20}
-            color="grayWhite"
-            name="arrowLeft"
-            onPress={navigation.goBack}
-          />
-          <Icon
-            size={20}
-            color="grayWhite"
-            name={flashOn ? 'flashOn' : 'flashOff'}
-            onPress={toggleFlash}
-          />
-          <Box width={20} />
-        </Box>
-        <Box {...$controlAreaBottom}>
-          <Icon size={80} color="grayWhite" name="cameraClick" />
+    <PermissionManager
+      permissionName="camera"
+      description="Permita o Nubble acessar a camera">
+      <Box flex={1}>
+        <Box backgroundColor="grayWhite" style={StyleSheet.absoluteFill} />
+        <Box flex={1} justifyContent="space-between">
+          <Box {...$controlAreaTop} style={{paddingTop: top}}>
+            <Icon
+              size={20}
+              color="grayWhite"
+              name="arrowLeft"
+              onPress={navigation.goBack}
+            />
+            <Icon
+              size={20}
+              color="grayWhite"
+              name={flashOn ? 'flashOn' : 'flashOff'}
+              onPress={toggleFlash}
+            />
+            <Box width={20} />
+          </Box>
+          <Box {...$controlAreaBottom}>
+            <Icon size={80} color="grayWhite" name="cameraClick" />
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </PermissionManager>
   );
 }
 
