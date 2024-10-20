@@ -35,6 +35,7 @@ import {
   SendIcon,
   SettingsIcon,
   TrashIcon,
+  CameraRotate,
 } from '@assets';
 
 import {useAppTheme} from '@hooks';
@@ -81,6 +82,7 @@ const iconRegistry = {
   bookmarkFill: BookmarkFillIcon,
   camera: CameraIcon,
   cameraClick: CameraClick,
+  cameraRotate: CameraRotate,
   chat: ChatIcon,
   chatOn: ChatOnIcon,
   check: CheckIcon,
