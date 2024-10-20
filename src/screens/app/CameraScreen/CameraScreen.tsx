@@ -2,7 +2,11 @@ import React, {useRef, useState} from 'react';
 import {Dimensions, StyleSheet} from 'react-native';
 
 import {useIsFocused} from '@react-navigation/native';
-import {Camera, useCameraDevice} from 'react-native-vision-camera';
+import {
+  Camera,
+  useCameraDevice,
+  CameraPosition,
+} from 'react-native-vision-camera';
 
 import {Box, BoxProps, Icon, PermissionManager} from '@components';
 import {useAppSafeArea, useAppState} from '@hooks';
@@ -16,7 +20,8 @@ export function CameraScreen({navigation}: AppScreenProps<'CameraScreen'>) {
   const {top} = useAppSafeArea();
   const [flashOn, setFlashOn] = useState(false);
   const [isReady, setIsReady] = useState(false);
-  const device = useCameraDevice('back');
+  const [cameraPosition, setCameraPosition] = useState<CameraPosition>('back');
+  const device = useCameraDevice(cameraPosition);
 
   const isFocused = useIsFocused();
   const appState = useAppState();
@@ -26,6 +31,10 @@ export function CameraScreen({navigation}: AppScreenProps<'CameraScreen'>) {
 
   function toggleFlash() {
     setFlashOn(!flashOn);
+  }
+
+  function togglePosition() {
+    setCameraPosition(prev => (prev === 'back' ? 'front' : 'back'));
   }
 
   async function takePhoto() {
@@ -71,7 +80,13 @@ export function CameraScreen({navigation}: AppScreenProps<'CameraScreen'>) {
               name={flashOn ? 'flashOn' : 'flashOff'}
               onPress={toggleFlash}
             />
-            <Box width={20} />
+            <Icon
+              size={20}
+              color="grayWhite"
+              name={'cameraRotate'}
+              onPress={togglePosition}
+            />
+            {/* <Box width={20} /> */}
           </Box>
           <Box {...$controlAreaBottom}>
             {isReady && (
