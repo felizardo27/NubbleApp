@@ -3,3 +3,9 @@ export type PhotoListPaginated = {
   cursor?: string;
   hasNextPage: boolean;
 };
+
+export type ImageForUpload = {
+  uri: string;
+  name: string;
+  type: 'image/png' | 'image/jpeg';
+};
