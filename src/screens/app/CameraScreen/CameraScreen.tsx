@@ -41,6 +41,7 @@ export function CameraScreen({navigation}: AppScreenProps<'CameraScreen'>) {
     if (camera.current) {
       const photoFile = await camera.current?.takePhoto({
         flash: flashOn ? 'on' : 'off',
+        qualityPrioritization: 'quality',
       });
 
       navigation.navigate('PublishPostScreen', {
@@ -57,7 +58,6 @@ export function CameraScreen({navigation}: AppScreenProps<'CameraScreen'>) {
         {device != null && (
           <Camera
             ref={camera}
-            photoQualityBalance="quality"
             photo={true}
             style={StyleSheet.absoluteFill}
             device={device}
