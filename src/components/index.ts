@@ -17,3 +17,4 @@ export * from './ProfileAvatar/ProfileAvatar';
 export * from './TextMessage/TextMessage';
 export * from './Toast/Toast';
 export * from './PermissionManager/PermissionManager';
+export * from './Separator/Separator';
