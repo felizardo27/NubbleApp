@@ -1,29 +1,32 @@
 import React from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
-import {useAuthCredentials} from '@services';
+// import {useAuthCredentials} from '@services';
 
-import {ActivityIndicator, Box} from '@components';
-import {AppStack, AuthStack} from '@routes';
+// import {ActivityIndicator, Box} from '@components';
+// import {AppStack, AuthStack} from '@routes';
+
+import {OnBoardingStack} from './OnBoardingStack';
 
 export function Router() {
-  const {authCredentials, isLoading} = useAuthCredentials();
+  // const {authCredentials, isLoading} = useAuthCredentials();
 
-  if (isLoading) {
-    return (
-      <Box
-        flex={1}
-        backgroundColor="background"
-        justifyContent="center"
-        alignItems="center">
-        <ActivityIndicator size="large" />
-      </Box>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <Box
+  //       flex={1}
+  //       backgroundColor="background"
+  //       justifyContent="center"
+  //       alignItems="center">
+  //       <ActivityIndicator size="large" />
+  //     </Box>
+  //   );
+  // }
 
   return (
     <NavigationContainer>
-      {authCredentials ? <AppStack /> : <AuthStack />}
+      <OnBoardingStack />
+      {/* {authCredentials ? <AppStack /> : <AuthStack />} */}
     </NavigationContainer>
   );
 }
