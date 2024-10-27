@@ -24,13 +24,13 @@ export function OnboardingPage({
 }: OnboardingPageProps) {
   return (
     <Box flex={1} bg="background" width={SCREEN_WIDTH}>
-      <Box flex={4} bg="redError">
+      <Box flex={4}>
         <ImageHeader image={pageItem.image} />
       </Box>
-      <Box flex={5} bg="carrotSecondary">
+      <Box flex={5} paddingHorizontal="s24">
         <Content {...pageItem} />
       </Box>
-      <Box flex={1} bg="success">
+      <Box flex={1} paddingHorizontal="s24">
         <BottomMenu onPressNext={onPressNext} onPressSkip={onPressSkip} />
       </Box>
     </Box>

@@ -10,7 +10,15 @@ export function Content({title, subtitle}: ContentProps) {
   return (
     <Box>
       <Text preset="headingLarge" bold>
-        {title}
+        {title.map((text, index) => (
+          <Text
+            key={index}
+            preset="headingLarge"
+            bold
+            color={text.highlight ? 'carrotSecondary' : 'backgroundContrast'}>
+            {text.text}
+          </Text>
+        ))}
       </Text>
       <Text preset="paragraphLarge">{subtitle}</Text>
     </Box>

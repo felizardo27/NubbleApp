@@ -11,13 +11,15 @@ export function BottomMenu({
   return (
     <Box flexDirection="row" alignItems="center" justifyContent="space-between">
       <PressableBox onPress={onPressSkip} hitSlop={10}>
-        <Text>Pular</Text>
+        <Text color="gray2" semiBold>
+          Pular
+        </Text>
       </PressableBox>
       <PressableBox onPress={onPressNext} flexDirection="row">
-        <Text mr="s4" semiBold>
+        <Text mr="s4" bold>
           Próximo
         </Text>
-        <Icon name="arrowRight" />
+        <Icon name="arrowRight" color="carrotSecondary" />
       </PressableBox>
     </Box>
   );
