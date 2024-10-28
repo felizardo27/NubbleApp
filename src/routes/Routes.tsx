@@ -1,29 +1,36 @@
 import React from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
-import {useAuthCredentials} from '@services';
 
 import {ActivityIndicator, Box} from '@components';
 import {AppStack, AuthStack} from '@routes';
 
-export function Router() {
-  const {authCredentials, isLoading} = useAuthCredentials();
+import {OnBoardingStack} from './OnBoardingStack';
+import {Stacks, useRouter} from './useRouter';
 
-  if (isLoading) {
-    return (
-      <Box
-        flex={1}
-        backgroundColor="background"
-        justifyContent="center"
-        alignItems="center">
-        <ActivityIndicator size="large" />
-      </Box>
-    );
-  }
-
+function LoadingScreen() {
   return (
-    <NavigationContainer>
-      {authCredentials ? <AppStack /> : <AuthStack />}
-    </NavigationContainer>
+    <Box
+      flex={1}
+      backgroundColor="background"
+      justifyContent="center"
+      alignItems="center">
+      <ActivityIndicator size="large" />
+    </Box>
   );
+}
+
+const stacks: Record<Stacks, React.ReactElement> = {
+  Loading: <LoadingScreen />,
+  Auth: <AuthStack />,
+  App: <AppStack />,
+  Onboarding: <OnBoardingStack />,
+};
+
+export function Router() {
+  const stack = useRouter();
+
+  const Stack = stacks[stack];
+
+  return <NavigationContainer>{Stack}</NavigationContainer>;
 }
