@@ -1,6 +1,8 @@
 import React, {useRef, useState} from 'react';
 import {FlatList, ListRenderItemInfo} from 'react-native';
 
+import {useSettingsService} from '@services';
+
 import {Box} from '@components';
 import {OnboardingScreenProps} from '@routes';
 
@@ -8,6 +10,7 @@ import {OnboardingPage} from './components/OnboardingPage';
 import {OnboardingPageItem, onboardingPages} from './onboardingData';
 
 export function OnboardingScreen({}: OnboardingScreenProps<'OnboardingScreen'>) {
+  const {finishOnboarding} = useSettingsService();
   const [pageIndex, setPageIndex] = useState(0);
 
   const flatListRef = useRef<FlatList<OnboardingPageItem>>(null);
@@ -15,7 +18,7 @@ export function OnboardingScreen({}: OnboardingScreenProps<'OnboardingScreen'>) 
   function onNextPage() {
     const isNextPage = pageIndex === onboardingPages.length - 1;
     if (isNextPage) {
-      onFinishOnboarding();
+      finishOnboarding();
     } else {
       const nextIndex = pageIndex + 1;
       flatListRef.current?.scrollToIndex({index: nextIndex, animated: true});
@@ -23,17 +26,12 @@ export function OnboardingScreen({}: OnboardingScreenProps<'OnboardingScreen'>) 
     }
   }
 
-  function onFinishOnboarding() {
-    // TODO:
-    console.log('finish');
-  }
-
   function renderItem({item}: ListRenderItemInfo<OnboardingPageItem>) {
     return (
       <OnboardingPage
         pageItem={item}
         onPressNext={onNextPage}
-        onPressSkip={onFinishOnboarding}
+        onPressSkip={finishOnboarding}
       />
     );
   }
