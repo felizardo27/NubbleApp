@@ -63,6 +63,7 @@ export function CameraScreen({navigation}: AppScreenProps<'CameraScreen'>) {
             style={StyleSheet.absoluteFill}
             device={device}
             isActive={isActive}
+            enableHighQualityPhotos
             onInitialized={() => setIsReady(true)}
           />
         )}
