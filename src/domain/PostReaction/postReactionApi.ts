@@ -1,22 +1,22 @@
 import {api, PageAPI, PageParams} from '@api';
 
 import {
-  postReactionAPI,
-  postReactionBaseAPI,
-  postReactionType,
+  PostReactionAPI,
+  PostReactionBaseAPI,
+  PostReactionType,
 } from './postReactionsTypes';
 
 export const POST_REACTION_PATH = 'user/reactions';
 
 type MyReactionsParam = PageParams & {
   post_id?: number;
-  reaction_type?: postReactionType;
+  reaction_type?: PostReactionType;
 };
 
 async function getMyReactions(
   myReactionsParam: MyReactionsParam,
-): Promise<PageAPI<postReactionAPI>> {
-  const response = await api.get<PageAPI<postReactionAPI>>(
+): Promise<PageAPI<PostReactionAPI>> {
+  const response = await api.get<PageAPI<PostReactionAPI>>(
     `${POST_REACTION_PATH}/my-reactions`,
     {
       params: {
@@ -29,10 +29,10 @@ async function getMyReactions(
 
 async function createOrUpdateReaction(
   post_id: number,
-  reaction_type: postReactionType,
-): Promise<postReactionBaseAPI> {
+  reaction_type: PostReactionType,
+): Promise<PostReactionBaseAPI> {
   const path = `${POST_REACTION_PATH}/${post_id}/${reaction_type}`;
-  const response = await api.post<postReactionBaseAPI>(path);
+  const response = await api.post<PostReactionBaseAPI>(path);
   return response.data;
 }
 
