@@ -1,13 +1,23 @@
 import React from 'react';
 
-import {Screen, Text} from '@components';
+import {QueryKeys} from '@infra';
+
+import {InfinityScrollLists, Screen} from '@components';
 import {AppTabScreenProps} from '@routes';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function FavoriteScreen(props: AppTabScreenProps<'FavoriteScreen'>) {
   return (
-    <Screen>
-      <Text preset="headingLarge">Favorite Screen</Text>
+    <Screen flex={1} title="Favoritos">
+      <InfinityScrollLists
+        renderItem={{}}
+        flatListProps={{}}
+        queryKey={QueryKeys.FavoriteList}
+        emptyListProps={{
+          emptyMessage: 'Não há favoritos',
+          errorMessage: 'Erro ao carregar os favoritos 😢',
+        }}
+      />
     </Screen>
   );
 }
