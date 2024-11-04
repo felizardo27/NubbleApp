@@ -52,6 +52,12 @@ export function InfinityScrollLists<ItemT extends ItemTConstraints>({
         />
       }
       {...flatListProps}
+      contentContainerStyle={[
+        {
+          flex: list.length === 0 ? 1 : undefined,
+        },
+        flatListProps?.contentContainerStyle,
+      ]}
     />
   );
 }
