@@ -3,16 +3,12 @@ import React from 'react';
 import {Box, Icon, IconProps, Text, TouchableOpacityBox} from '@components';
 import {Post} from '@domain';
 
-type Props = Pick<Post, 'reactionCount' | 'commentCount' | 'favoriteCount'> & {
+type Props = {
+  post: Post;
   hideCommentAction?: boolean;
 };
 
-export function PostActions({
-  reactionCount,
-  commentCount,
-  favoriteCount,
-  hideCommentAction,
-}: Props) {
+export function PostActions({post, hideCommentAction}: Props) {
   function likePost() {}
 
   function navigateToComment() {}
@@ -28,7 +24,7 @@ export function PostActions({
           default: 'heart',
           marked: 'heartFill',
         }}
-        text={reactionCount}
+        text={post.reactionCount}
         onPress={likePost}
       />
       <Item
@@ -38,7 +34,7 @@ export function PostActions({
           default: 'comment',
           marked: 'comment',
         }}
-        text={commentCount}
+        text={post.commentCount}
         onPress={navigateToComment}
       />
       <Item
@@ -48,7 +44,7 @@ export function PostActions({
           default: 'bookmark',
           marked: 'bookmarkFill',
         }}
-        text={favoriteCount}
+        text={post.favoriteCount}
         onPress={favoritePost}
       />
     </Box>

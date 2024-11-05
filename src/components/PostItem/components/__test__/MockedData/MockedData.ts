@@ -13,4 +13,5 @@ export const mockedPost: Post = {
     profileURL: 'https://url.com',
     userName: 'mariajulia',
   },
+  reactions: [],
 };
