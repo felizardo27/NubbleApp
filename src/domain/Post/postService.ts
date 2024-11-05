@@ -2,6 +2,8 @@ import {apiAdapter} from '@api';
 import {ImageForUpload} from '@services';
 import {Page} from '@types';
 
+import {PostReaction, PostReactionType} from '../PostReaction';
+
 import {postAdapter} from './postAdapter';
 import {postApi} from './postApi';
 import {Post} from './postTypes';
@@ -26,8 +28,18 @@ async function getById(postId: number): Promise<Post> {
   return postAdapter.toPost(postApiData);
 }
 
+function hasReactToPost(
+  postReactions: Pick<PostReaction, 'emojiType'>[],
+  postReactionType: PostReactionType,
+) {
+  return postReactions.some(
+    reaction => reaction.emojiType === postReactionType,
+  );
+}
+
 export const postService = {
   getList,
   createPost,
   getById,
+  hasReactToPost,
 };
