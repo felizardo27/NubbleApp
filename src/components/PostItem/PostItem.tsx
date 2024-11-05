@@ -11,9 +11,10 @@ import {Post} from '@domain';
 
 interface Props {
   post: Post;
+  hideCommentAction?: boolean;
 }
 
-export function PostItem({post}: Props) {
+export function PostItem({post, hideCommentAction}: Props) {
   return (
     <Box paddingHorizontal="s24" marginBottom="s24">
       <ProfileUser
@@ -25,11 +26,13 @@ export function PostItem({post}: Props) {
       />
       <PostImage imageURL={post.imageURL} />
       <PostActions
+        hideCommentAction={hideCommentAction}
         reactionCount={post.reactionCount}
         commentCount={post.commentCount}
         favoriteCount={post.favoriteCount}
       />
       <PostBottom
+        hideCommentAction={hideCommentAction}
         author={post.author}
         commentCount={post.commentCount}
         text={post.text}

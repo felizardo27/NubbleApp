@@ -55,6 +55,7 @@ export function PostCommentItem({
       onLongPress={confirmRemove}>
       <Box
         mb="s16"
+        paddingHorizontal="s24"
         flexDirection="row"
         alignItems="center"
         justifyContent="flex-start">
