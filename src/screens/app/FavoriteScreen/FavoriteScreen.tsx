@@ -1,9 +1,10 @@
 import React from 'react';
-import {Dimensions, Image, ListRenderItemInfo} from 'react-native';
+import {Dimensions, Image, ListRenderItemInfo, Pressable} from 'react-native';
 
 import {QueryKeys} from '@infra';
+import {useNavigation} from '@react-navigation/native';
 
-import {Box, InfinityScrollLists, Screen, Text} from '@components';
+import {InfinityScrollLists, Screen, Text} from '@components';
 import {PostReaction, postReactionService} from '@domain';
 import {AppTabScreenProps} from '@routes';
 
@@ -17,15 +18,25 @@ const ITEM_WITH =
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function FavoriteScreen(props: AppTabScreenProps<'FavoriteScreen'>) {
+  const navigation = useNavigation();
+
   function renderItem({item}: ListRenderItemInfo<PostReaction>) {
     return (
-      <Box>
+      <Pressable
+        onPress={() =>
+          navigation.navigate('PostCommentScreen', {
+            postId: item.post.id,
+            postAuthorId: item.author.id,
+          })
+        }>
         <Image
           source={{uri: item.post.imageURL}}
           style={{width: ITEM_WITH, height: ITEM_WITH}}
         />
-        <Text semiBold>{item.author.username}</Text>
-      </Box>
+        <Text semiBold mt="s4">
+          {item.author.username}
+        </Text>
+      </Pressable>
     );
   }
 
