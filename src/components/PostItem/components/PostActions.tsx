@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {useNavigation} from '@react-navigation/native';
+
 import {Box, Icon, IconProps, Text, TouchableOpacityBox} from '@components';
 import {Post, useReactToPost} from '@domain';
 
@@ -9,26 +11,29 @@ type Props = {
 };
 
 export function PostActions({post, hideCommentAction}: Props) {
+  const navigation = useNavigation();
+
   const likeReaction = useReactToPost({post, postReactionType: 'like'});
   const favoriteReaction = useReactToPost({post, postReactionType: 'favorite'});
 
-  function likePost() {}
-
-  function navigateToComment() {}
-
-  function favoritePost() {}
+  function navigateToComment() {
+    navigation.navigate('PostCommentScreen', {
+      postId: post.id,
+      postAuthorId: post.author.id,
+    });
+  }
 
   return (
     <Box mt="s16" flexDirection="row">
       <Item
-        marked={likeReaction.hasReact}
+        marked={likeReaction.hasReacted}
         disable={hideCommentAction}
         icon={{
           default: 'heart',
           marked: 'heartFill',
         }}
-        text={post.reactionCount}
-        onPress={likePost}
+        text={likeReaction.reactionCount}
+        onPress={likeReaction.reactToPost}
       />
       <Item
         disable={hideCommentAction}
@@ -41,14 +46,14 @@ export function PostActions({post, hideCommentAction}: Props) {
         onPress={navigateToComment}
       />
       <Item
-        marked={favoriteReaction.hasReact}
+        marked={favoriteReaction.hasReacted}
         disable={hideCommentAction}
         icon={{
           default: 'bookmark',
           marked: 'bookmarkFill',
         }}
-        text={post.favoriteCount}
-        onPress={favoritePost}
+        text={favoriteReaction.reactionCount}
+        onPress={favoriteReaction.reactToPost}
       />
     </Box>
   );
