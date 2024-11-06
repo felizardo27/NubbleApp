@@ -1,7 +1,7 @@
 import {useState} from 'react';
 
-import {MutationOptions} from '@infra';
-import {useMutation} from '@tanstack/react-query';
+import {MutationOptions, QueryKeys} from '@infra';
+import {useMutation, useQueryClient} from '@tanstack/react-query';
 
 import {
   Post,
@@ -15,9 +15,15 @@ type Params = {
   post: Post;
   postReactionType: PostReactionType;
   options?: MutationOptions<PostReactionBase>;
+  queryKeys?: QueryKeys[];
 };
 
-export function useReactToPost({post, postReactionType, options}: Params) {
+export function useReactToPost({
+  post,
+  postReactionType,
+  options,
+  queryKeys,
+}: Params) {
   const initialHasReacted = postService.hasReactToPost(
     post.reactions,
     postReactionType,
@@ -30,27 +36,34 @@ export function useReactToPost({post, postReactionType, options}: Params) {
     reactionCount: initialReactionCount,
   });
 
+  const query = useQueryClient();
+
   const {mutate} = useMutation<PostReactionBase, Error>({
     mutationFn: () =>
       postReactionService.reactToPost(post.id, postReactionType),
-    onSuccess: data => {
-      // TODO:
+    onSuccess: () => {
+      queryKeys?.forEach(queryKey => query.invalidateQueries([queryKey]));
     },
     onError: error => {
       if (options?.onError) {
         options.onError(error.message);
       }
+      toggleReactionState();
     },
   });
 
   function reactToPost() {
+    toggleReactionState();
+    mutate();
+  }
+
+  function toggleReactionState() {
     setReactionState(prev => ({
       hasReacted: !prev.hasReacted,
       reactionCount: prev.hasReacted
         ? prev.reactionCount - 1
         : prev.reactionCount + 1,
     }));
-    mutate();
   }
 
   return {
