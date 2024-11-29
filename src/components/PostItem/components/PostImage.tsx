@@ -3,6 +3,8 @@ import {Dimensions, Image, ImageStyle, StyleProp} from 'react-native';
 
 import {Post} from '@domain';
 
+const WIDTH = Dimensions.get('screen').width;
+
 type Props = Pick<Post, 'imageURL'>;
 
 export function PostImage({imageURL}: Props) {
@@ -11,7 +13,7 @@ export function PostImage({imageURL}: Props) {
 
 const $postImage: StyleProp<ImageStyle> = {
   marginHorizontal: -24,
-  width: Dimensions.get('screen').width,
-  height: 300,
+  width: WIDTH,
+  height: WIDTH,
   resizeMode: 'cover',
 };
