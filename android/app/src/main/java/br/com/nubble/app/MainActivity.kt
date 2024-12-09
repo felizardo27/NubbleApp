@@ -1,4 +1,4 @@
-package com.nubbleapp
+package br.com.nubble.app
 import expo.modules.ReactActivityDelegateWrapper
 
 import com.facebook.react.ReactActivity

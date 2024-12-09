@@ -1,4 +1,4 @@
-package com.nubbleapp
+package br.com.nubble.app
 import android.content.res.Configuration
 import expo.modules.ApplicationLifecycleDispatcher
 import expo.modules.ReactNativeHostWrapper
