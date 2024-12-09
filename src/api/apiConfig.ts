@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import {AuthCredentials, authService} from '@domain';
 
-export const BASE_URL = 'http://127.0.0.1:3333/';
+export const BASE_URL = 'http://100.27.63.100:3333/';
 
 export const api = axios.create({
   // fix [AxiosError: Network Error] on Android
@@ -24,7 +24,7 @@ export function registerInterceptor({
   const interceptor = api.interceptors.response.use(
     response => response,
     async responseError => {
-      if (responseError.response.status === 401) {
+      if (responseError?.response?.status === 401) {
         const failedRequest = responseError.config;
         const hasNotRefreshToken = !authCredentials?.refreshToken;
         const isRefreshTokenRequest =
