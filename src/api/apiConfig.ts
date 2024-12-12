@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import {AuthCredentials, authService} from '@domain';
 
-export const BASE_URL = 'http://100.27.63.100:3333/';
+export const BASE_URL = 'http://54.232.99.128:3333/';
 
 export const api = axios.create({
   // fix [AxiosError: Network Error] on Android
