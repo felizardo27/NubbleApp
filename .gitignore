@@ -35,6 +35,8 @@ local.properties
 *.jks
 !debug.keystore
 
+google-service-account.json
+
 # node.js
 #
 node_modules/
