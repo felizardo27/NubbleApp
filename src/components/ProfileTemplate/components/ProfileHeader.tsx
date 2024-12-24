@@ -2,7 +2,7 @@ import React from 'react';
 
 import {useNavigation} from '@react-navigation/native';
 
-import {Text, Box, ProfileAvatar, Icon, Button} from '@components';
+import {Text, Box, ProfileAvatar, Icon, Button, BackButton} from '@components';
 import {User} from '@domain';
 
 import {ProfileMetaData} from './ProfileMetaData';
@@ -35,13 +35,17 @@ export function ProfileHeader({user, isMyProfile, publicationCount}: Props) {
           followersCount={user.meta.followersCount}
           followingCount={user.meta.followingCount}
         />
-        {isMyProfile && (
+        {isMyProfile ? (
           <Box position="absolute" alignSelf="flex-end">
             <Icon
               size={30}
               name="settings"
               onPress={() => navigation.navigate('SettingsScreen')}
             />
+          </Box>
+        ) : (
+          <Box position="absolute" alignSelf="flex-start" left={-24}>
+            <BackButton />
           </Box>
         )}
       </Box>
