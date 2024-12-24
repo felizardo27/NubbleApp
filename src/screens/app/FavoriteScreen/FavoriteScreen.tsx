@@ -46,7 +46,7 @@ export function FavoriteScreen(props: AppTabScreenProps<'FavoriteScreen'>) {
       <InfinityScrollLists
         renderItem={renderItem}
         getList={page => postReactionService.getMyReactions('favorite', page)}
-        queryKey={QueryKeys.FavoriteList}
+        queryKey={[QueryKeys.FavoriteList]}
         flatListProps={{
           numColumns: NUM_COLUMNS,
           columnWrapperStyle: {columnGap: ITEM_MARGIN},
