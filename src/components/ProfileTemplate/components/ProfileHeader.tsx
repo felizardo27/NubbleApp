@@ -2,9 +2,10 @@ import React from 'react';
 
 import {useNavigation} from '@react-navigation/native';
 
-import {Text, Box, ProfileAvatar, Icon, Button, BackButton} from '@components';
+import {Text, Box, ProfileAvatar, Icon, BackButton} from '@components';
 import {User} from '@domain';
 
+import {ProfileButton} from './ProfileButton';
 import {ProfileMetaData} from './ProfileMetaData';
 
 type Props = {
@@ -49,7 +50,7 @@ export function ProfileHeader({user, isMyProfile, publicationCount}: Props) {
           </Box>
         )}
       </Box>
-      <Button title="Mensagem" marginVertical="s24" />
+      <ProfileButton isMyProfile={isMyProfile} isFollowing={true} />
     </Box>
   );
 }
