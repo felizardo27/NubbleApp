@@ -32,7 +32,7 @@ export function ProfileUser({
     if (onPress) {
       onPress(event);
     }
-    navigation.navigate('ProfileScreen', {userId: user.id});
+    navigation.navigate('ProfileScreen', {userId: user?.id});
   }
 
   return (
@@ -44,7 +44,11 @@ export function ProfileUser({
       onPress={handleOnPress}
       {...pressableBoxProps}>
       <Box flexDirection="row" alignItems="center">
-        <ProfileAvatar {...avatarProps} imageURL={user.profileUrl} />
+        <ProfileAvatar
+          {...avatarProps}
+          imageURL={user.profileUrl}
+          authorId={user.id}
+        />
         <Text preset="paragraphMedium" semiBold ml="s12">
           {user.username}
         </Text>

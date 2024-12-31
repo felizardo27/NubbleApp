@@ -19,9 +19,9 @@ export function PostItem({post, hideCommentAction}: Props) {
     <Box paddingHorizontal="s24" marginBottom="s24">
       <ProfileUser
         user={{
-          id: post.author.id,
-          profileUrl: post.author.profileURL,
-          username: post.author.userName,
+          id: post?.author?.id,
+          profileUrl: post?.author?.profileURL,
+          username: post?.author?.userName,
         }}
       />
       <PostImage imageURL={post.imageURL} />
