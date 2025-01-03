@@ -3,11 +3,12 @@ import {Page} from '@types';
 
 import {userAdapter} from './userAdapter';
 import {userApi} from './userApi';
-import {User} from './userTypes';
+import {User, UserDetails} from './userTypes';
 
-async function getById(userId: number): Promise<User> {
+async function getById(userId: number): Promise<UserDetails> {
   const userAPI = await userApi.getById(userId.toString());
-  return userAdapter.toUser(userAPI);
+  const {isFollowing} = await userApi.isFollowing(userId.toString());
+  return userAdapter.toUserDetails(userAPI, isFollowing);
 }
 
 async function searchUser(search: string): Promise<Page<User>> {
