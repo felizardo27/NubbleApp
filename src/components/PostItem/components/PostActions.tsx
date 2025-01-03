@@ -1,10 +1,10 @@
 import React from 'react';
 
 import {QueryKeys} from '@infra';
-import {useNavigation} from '@react-navigation/native';
 
 import {Box, Icon, IconProps, Text, TouchableOpacityBox} from '@components';
 import {Post, useReactToPost} from '@domain';
+import {useAppNavigation} from '@hooks';
 
 type Props = {
   post: Post;
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export function PostActions({post, hideCommentAction}: Props) {
-  const navigation = useNavigation();
+  const navigate = useAppNavigation();
 
   const likeReaction = useReactToPost({post, postReactionType: 'like'});
   const favoriteReaction = useReactToPost({
@@ -22,7 +22,7 @@ export function PostActions({post, hideCommentAction}: Props) {
   });
 
   function navigateToComment() {
-    navigation.navigate('PostCommentScreen', {
+    navigate.toPostComment({
       postId: post.id,
       postAuthorId: post.author.id,
     });
