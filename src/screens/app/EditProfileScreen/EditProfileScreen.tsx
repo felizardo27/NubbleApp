@@ -1,12 +1,19 @@
 import React from 'react';
 
-import {Screen, Text} from '@components';
+import {Screen} from '@components';
+import {useUserGetById} from '@domain';
 import {AppScreenProps} from '@routes';
 
-export function EditProfileScreen({}: AppScreenProps<'EditProfileScreen'>) {
+import {EditProfileHeader} from './components/EditProfileHeader';
+
+export function EditProfileScreen({
+  route,
+}: AppScreenProps<'EditProfileScreen'>) {
+  const {user} = useUserGetById(route.params.userId);
+
   return (
     <Screen canGoBack title="Editar Perfil">
-      <Text>Profile Screen</Text>
+      <EditProfileHeader user={user} />
     </Screen>
   );
 }
