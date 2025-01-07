@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {useAsyncValidation} from '@form';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {useForm} from 'react-hook-form';
 
@@ -12,12 +13,11 @@ import {
   ActivityIndicator,
   Icon,
 } from '@components';
-import {useAuthSignUp} from '@domain';
+import {authService, useAuthSignUp} from '@domain';
 import {useResetNavigationSuccess} from '@hooks';
 import {AuthScreenProps, AuthStackParamList} from '@routes';
 
 import {signUpSchema, SignUpSchema} from './signUpSchema';
-import {useAsyncValidation} from './useAsyncValidation';
 
 const resetParams: AuthStackParamList['SuccessScreen'] = {
   title: 'Sua conta foi criada com sucesso!',
@@ -53,10 +53,22 @@ export function SignUpScreen({}: AuthScreenProps<'SignUpScreen'>) {
     signUp(formValues);
   }
 
-  const {usernameValidation, emailValidation} = useAsyncValidation({
+  const usernameValidation = useAsyncValidation({
     watch,
     getFieldState,
+    fieldName: 'username',
+    isAvailableFunc: authService.isUserNameAvailable,
+    errorMessage: 'username inválido',
   });
+
+  const emailValidation = useAsyncValidation({
+    watch,
+    getFieldState,
+    fieldName: 'email',
+    isAvailableFunc: authService.isEmailAvailable,
+    errorMessage: 'email inválido',
+  });
+
   return (
     <Screen canGoBack scrollable>
       <Text preset="headingLarge">Criar uma conta</Text>
