@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View} from 'react-native';
 
 import {useAsyncValidation} from '@form';
@@ -12,18 +12,21 @@ import {editProfileSchema, EditProfileSchema} from '../editProfileSchema';
 
 type Props = {
   user: User;
+  onChangeIsValid: (isValid: boolean) => void;
 };
 
-export function EditProfileForm({user}: Props) {
-  const {control, watch, getFieldState} = useForm<EditProfileSchema>({
-    resolver: zodResolver(editProfileSchema),
-    defaultValues: {
-      username: user.username,
-      firstName: user.firstName,
-      lastName: user.lastName,
+export function EditProfileForm({user, onChangeIsValid}: Props) {
+  const {control, watch, getFieldState, formState} = useForm<EditProfileSchema>(
+    {
+      resolver: zodResolver(editProfileSchema),
+      defaultValues: {
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+      },
+      mode: 'onChange',
     },
-    mode: 'onChange',
-  });
+  );
 
   const usernameValidation = useAsyncValidation({
     watch,
@@ -32,6 +35,10 @@ export function EditProfileForm({user}: Props) {
     isAvailableFunc: authService.isUserNameAvailable,
     errorMessage: 'username inválido',
   });
+
+  useEffect(() => {
+    onChangeIsValid(formState.isValid && !usernameValidation.notReady);
+  }, [formState.isValid, onChangeIsValid, usernameValidation.notReady]);
 
   return (
     <View>
