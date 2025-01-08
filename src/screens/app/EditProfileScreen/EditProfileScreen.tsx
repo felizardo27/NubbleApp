@@ -1,9 +1,10 @@
 import React from 'react';
 
-import {Screen} from '@components';
+import {Button, Screen} from '@components';
 import {useUserGetById} from '@domain';
 import {AppScreenProps} from '@routes';
 
+import {EditProfileForm} from './components/EditProfileForm';
 import {EditProfileHeader} from './components/EditProfileHeader';
 
 export function EditProfileScreen({
@@ -11,9 +12,14 @@ export function EditProfileScreen({
 }: AppScreenProps<'EditProfileScreen'>) {
   const {user} = useUserGetById(route.params.userId);
 
+  function submitForm() {}
+
   return (
     <Screen canGoBack title="Editar Perfil">
       <EditProfileHeader user={user} />
+      {user && <EditProfileForm user={user} />}
+
+      <Button title="Salvar alterações" mt="s40" onPress={submitForm} />
     </Screen>
   );
 }
