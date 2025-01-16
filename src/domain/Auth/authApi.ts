@@ -5,6 +5,7 @@ import {UserAPI} from '../User';
 
 import {
   AuthCredentialsApi,
+  EditPasswordParams,
   FieldIsAvailableAPI,
   ForgotPasswordAPI,
   SignUpDataAPI,
@@ -77,7 +78,16 @@ async function forgotPassword(
     'auth/forgot-password',
     params,
   );
-  console.log(response.data);
+  return response.data;
+}
+
+async function editPassword(
+  params: EditPasswordParams,
+): Promise<{message: string}> {
+  const response = await api.post<{message: string}>(
+    'auth/profile/edit-password',
+    params,
+  );
   return response.data;
 }
 
@@ -90,4 +100,5 @@ export const authApi = {
   isUserNameAvailable,
   isEmailAvailable,
   forgotPassword,
+  editPassword,
 };
