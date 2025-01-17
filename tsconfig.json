@@ -17,7 +17,8 @@
       "@services": ["src/services"],
       "@test": ["src/test"],
       "@assets": ["src/assets"],
-      "test-utils": ["src/test/test-utils"]
+      "@form": ["src/form"],
+      "test-utils": ["src/test/test-utils"],
     }
   },
 }

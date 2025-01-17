@@ -11,6 +11,9 @@ import {
   PublishPostScreen,
   CameraScreen,
   DarkModeScreen,
+  EditProfileScreen,
+  EditEmailScreen,
+  EditPasswordScreen,
 } from '@screens';
 
 import {AppTabBottomParamList, AppTabNavigator} from './AppTabNavigator';
@@ -32,6 +35,9 @@ export type AppStackParamList = {
     imageUri: string;
   };
   CameraScreen: undefined;
+  EditProfileScreen: {userId: number};
+  EditEmailScreen: {userId: number};
+  EditPasswordScreen: {userId: number};
 };
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
@@ -56,6 +62,9 @@ export function AppStack({initialRouteName = 'AppTabNavigator'}: Props) {
       <Stack.Screen name="PublishPostScreen" component={PublishPostScreen} />
       <Stack.Screen name="CameraScreen" component={CameraScreen} />
       <Stack.Screen name="DarkModeScreen" component={DarkModeScreen} />
+      <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
+      <Stack.Screen name="EditEmailScreen" component={EditEmailScreen} />
+      <Stack.Screen name="EditPasswordScreen" component={EditPasswordScreen} />
     </Stack.Navigator>
   );
 }

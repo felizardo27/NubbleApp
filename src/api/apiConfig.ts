@@ -2,7 +2,8 @@ import axios from 'axios';
 
 import {AuthCredentials, authService} from '@domain';
 
-export const BASE_URL = 'http://54.232.99.128:3333/';
+export const BASE_URL = 'http://localhost:3333/';
+// export const BASE_URL = 'http://192.168.0.135:3333/';
 
 export const api = axios.create({
   // fix [AxiosError: Network Error] on Android
@@ -44,6 +45,7 @@ export function registerInterceptor({
         failedRequest.headers.Authorization = `Bearer ${newAuthCredentials.token}`;
         return api(failedRequest);
       }
+      return Promise.reject(responseError);
     },
   );
   // remove listener when component unmount

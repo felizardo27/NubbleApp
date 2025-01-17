@@ -3,11 +3,12 @@ import {Page} from '@types';
 
 import {userAdapter} from './userAdapter';
 import {userApi} from './userApi';
-import {User} from './userTypes';
+import {UpdateUserParams, User, UserDetails} from './userTypes';
 
-async function getById(userId: number): Promise<User> {
+async function getById(userId: number): Promise<UserDetails> {
   const userAPI = await userApi.getById(userId.toString());
-  return userAdapter.toUser(userAPI);
+  const {isFollowing} = await userApi.isFollowing(userId.toString());
+  return userAdapter.toUserDetails(userAPI, isFollowing);
 }
 
 async function searchUser(search: string): Promise<Page<User>> {
@@ -16,7 +17,39 @@ async function searchUser(search: string): Promise<Page<User>> {
   return apiAdapter.toPageModel(userPageAPI, userAdapter.toUser);
 }
 
+async function updateUser(
+  current: User,
+  updatedParams: UpdateUserParams,
+): Promise<User> {
+  const updatedUser = getUpdatedUser(current, updatedParams);
+  const userAPI = await userApi.updateUser(updatedUser);
+  return userAdapter.toUser(userAPI);
+}
+
+function getUpdatedUser(
+  current: User,
+  updatedParams: UpdateUserParams,
+): UpdateUserParams {
+  const user: UpdateUserParams = {};
+
+  if (
+    !!updatedParams.firstName &&
+    current.firstName !== updatedParams.firstName
+  ) {
+    user.firstName = updatedParams.firstName;
+  }
+  if (!!updatedParams.lastName && current.lastName !== updatedParams.lastName) {
+    user.lastName = updatedParams.lastName;
+  }
+  if (!!updatedParams.username && current.username !== updatedParams.username) {
+    user.username = updatedParams.username;
+  }
+
+  return user;
+}
+
 export const userService = {
   getById,
   searchUser,
+  updateUser,
 };
