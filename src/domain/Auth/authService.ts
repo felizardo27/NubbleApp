@@ -42,6 +42,7 @@ async function requestNewPassword(email: string): Promise<string> {
 
 async function updatePassword(params: EditPasswordParams): Promise<string> {
   const {message} = await authApi.editPassword(params);
+  console.log('message-- ', message);
   return message;
 }
 

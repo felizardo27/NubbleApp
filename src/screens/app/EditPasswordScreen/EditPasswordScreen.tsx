@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {zodResolver} from '@hookform/resolvers/zod';
+import {useToastService} from '@services';
 import {useForm} from 'react-hook-form';
 
 import {Button, FormPasswordInput, Screen} from '@components';
@@ -15,8 +16,19 @@ const defaultValues: EditPasswordSchema = {
   confirmedPassword: '',
 };
 
-export function EditPasswordScreen({}: AppScreenProps<'EditPasswordScreen'>) {
-  const {updatePassword, isLoading} = useAuthUpdatePassword();
+export function EditPasswordScreen({
+  navigation,
+}: AppScreenProps<'EditPasswordScreen'>) {
+  const {showToast} = useToastService();
+  const {updatePassword, isLoading} = useAuthUpdatePassword({
+    onSuccess: message => {
+      showToast({message, type: 'success'});
+      navigation.goBack();
+    },
+    onError: message => {
+      showToast({message, type: 'error'});
+    },
+  });
   const {control, formState, handleSubmit} = useForm<EditPasswordSchema>({
     resolver: zodResolver(editPasswordSchema),
     defaultValues,
