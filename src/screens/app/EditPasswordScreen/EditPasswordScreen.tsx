@@ -3,7 +3,7 @@ import React from 'react';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {useForm} from 'react-hook-form';
 
-import {Button, FormTextInput, Screen} from '@components';
+import {Button, FormPasswordInput, Screen} from '@components';
 import {useAuthUpdatePassword} from '@domain';
 import {AppScreenProps} from '@routes';
 
@@ -25,7 +25,7 @@ export function EditPasswordScreen({}: AppScreenProps<'EditPasswordScreen'>) {
 
   return (
     <Screen canGoBack title="Alterar Senha">
-      <FormTextInput
+      <FormPasswordInput
         control={control}
         name="currentPassword"
         label="Senha atual"
@@ -33,7 +33,7 @@ export function EditPasswordScreen({}: AppScreenProps<'EditPasswordScreen'>) {
         boxProps={{mt: 's20'}}
       />
 
-      <FormTextInput
+      <FormPasswordInput
         control={control}
         name="newPassword"
         label="Nova senha"
@@ -41,7 +41,7 @@ export function EditPasswordScreen({}: AppScreenProps<'EditPasswordScreen'>) {
         boxProps={{mt: 's20'}}
       />
 
-      <FormTextInput
+      <FormPasswordInput
         control={control}
         name="confirmedPassword"
         label="Confirme a nova senha"
