@@ -5,7 +5,7 @@ import {AppScreenProps} from '@routes';
 
 export function MyFollowersScreen({}: AppScreenProps<'MyFollowersScreen'>) {
   return (
-    <Screen title="Seguidores">
+    <Screen flex={1} title="Seguidores">
       <Text>Seguidores</Text>
     </Screen>
   );
