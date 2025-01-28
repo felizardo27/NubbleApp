@@ -8,4 +8,6 @@ export enum QueryKeys {
   IsEmailAvailable = 'IsEmailAvailable',
   cameraRollList = 'cameraRollList',
   AsyncValidation = 'AsyncValidation',
+  MyFollowingList = 'MyFollowingList',
+  MyFollowersList = 'MyFollowersList',
 }

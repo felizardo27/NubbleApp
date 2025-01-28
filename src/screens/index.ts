@@ -17,5 +17,7 @@ export * from './app/DarkModeScreen/DarkModeScreen';
 export * from './app/EditProfileScreen/EditProfileScreen';
 export * from './app/EditEmailScreen/EditEmailScreen';
 export * from './app/EditPasswordScreen/EditPasswordScreen';
+export * from './app/MyFollowingScreen/MyFollowingScreen';
+export * from './app/MyFollowersScreen/MyFollowersScreen';
 
 export * from './onBoarding/OnboardingScreen';
