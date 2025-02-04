@@ -19,6 +19,9 @@ export function useRemoveFollow(options?: MutationOptions<void>) {
         queryKey: [QueryKeys.MyFollowingList],
       });
       queryClient.invalidateQueries({
+        queryKey: [QueryKeys.MyFollowersList],
+      });
+      queryClient.invalidateQueries({
         queryKey: [QueryKeys.UserGetById],
       });
       if (options?.onSuccess) {
@@ -37,9 +40,11 @@ export function useRemoveFollow(options?: MutationOptions<void>) {
     userId,
   }: {
     followId: number;
-    userId: number;
+    userId?: number;
   }) {
-    setSavedUserId(userId);
+    if (userId) {
+      setSavedUserId(userId);
+    }
     mutate(followId);
   }
 
