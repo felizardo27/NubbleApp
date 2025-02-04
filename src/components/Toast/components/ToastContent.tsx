@@ -8,10 +8,11 @@ import {$shadowProps} from '@theme';
 
 interface Props {
   toast: Toast;
+  hideToast: () => void;
 }
 const MAX_WIDTH = Dimensions.get('window').width * 0.9;
 
-export function ToastContent({toast}: Props) {
+export function ToastContent({toast, hideToast}: Props) {
   const type: ToastType = toast?.type || 'success';
 
   return (
@@ -20,6 +21,19 @@ export function ToastContent({toast}: Props) {
       <Text {...$textStyle} preset="paragraphMedium" bold ml="s16">
         {toast?.message}
       </Text>
+      {toast?.action && (
+        <Text
+          ml="s8"
+          color="marked"
+          preset="paragraphMedium"
+          bold
+          onPress={() => {
+            toast?.action?.onPress();
+            hideToast();
+          }}>
+          {toast.action.title}
+        </Text>
+      )}
     </Box>
   );
 }
