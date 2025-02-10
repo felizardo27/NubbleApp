@@ -36,6 +36,7 @@ local.properties
 !debug.keystore
 
 google-service-account.json
+google-services.json
 
 # node.js
 #
